@@ -1,9 +1,13 @@
 # Import libraries
 import time
 import sys
+import random
 
-
+# Battlefield area variables
 PLAYER_FIELD = [[" "] * 8 for i in range(8)]
+COMPUTER_FIELD = [[" "] * 8 for i in range(8)]
+PLAYER_GUESS = [[" "] * 8 for i in range(8)]
+COMPUTER_GUESS = [[" "] * 8 for i in range(8)]
 
 def print_fast(str):
     """
@@ -22,6 +26,9 @@ def print_slow(str):
         sys.stdout.write(letter)
         sys.stdout.flush()
         time.sleep(0.05)
+
+# Contains the length of each ship on the battlefield area
+SHIP_LENGTHS = [2, 3, 3, 4, 5]
 
 # Welcome screen message
 def welcome_screen():
@@ -66,7 +73,9 @@ opponent's ships\n")
 
 def display_field(field):
     """
-    Displays the battlefield 8x8 grid to the player.
+    Displays the battlefield 8x8 grid to the player, ensuring
+    placeholders are present to allow manipulation throughout
+    the game.
     """
     print("  A B C D E F G H")
     print("  ---------------")
@@ -75,6 +84,18 @@ def display_field(field):
         print("%d|%s|" % (row_number, "|".join(row)))
         row_number += 1
 
+def place_ship(field):
+    """
+    Allows the computer and player to place their ships on the 
+    battlefield area. The function loops through the various ship
+    lengths and checks to see if there is overlap during user input.
+    """
+    for ship_length in SHIP_LENGTHS:
+        while True:
+            if field == COMPUTER_FIELD:
+                orientation, row, column = random.choice(["H", "V"]), \
+                    random.randint(0, 7), random.randint(0, 7)
+        
 
 welcome_screen()
 display_field(PLAYER_FIELD)
