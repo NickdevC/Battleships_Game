@@ -95,6 +95,12 @@ def place_ship(field):
             if field == COMPUTER_FIELD:
                 orientation, row, column = random.choice(["H", "V"]), \
                     random.randint(0, 7), random.randint(0, 7)
+                if orientation == "H":
+                    for i in range(column, column + ship_length):
+                        field[row][i] = "$"
+                else:
+                    for i in range(row, row + ship_length):
+                        field[column][i] = "$"
         
 
 welcome_screen()
