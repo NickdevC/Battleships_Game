@@ -161,7 +161,9 @@ def player_input(place_ship):
                 else:
                     print("\u001b[31mPlease enter a valid letter between A-H \n")
                     break
-        return column, row, placement
+        return column
+        return row
+        return placement
     else:
         while True:
             try:
@@ -181,7 +183,8 @@ def player_input(place_ship):
                 else:
                     print("\u001b[31mPlease enter a valid letter between A-H \n")
                     break
-        return column, row
+        return column
+        return row
 
 welcome_screen()
 display_field(PLAYER_FIELD)
