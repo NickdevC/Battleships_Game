@@ -115,6 +115,29 @@ def place_ship(field):
                 display_field(PLAYER_FIELD)
                 break
 
+def player_input(place_ship):
+    """
+    Allows the user to input coordinate data to place their
+    ships and also signal where they wish to target their
+    opponents ships.
+    """
+    if place_ship == True:
+        while True:
+            try:
+                placement = input("Is your ship positioned vertically(V) \
+                    or horizontally(H)? \n").upper()
+                if placement == "H" or "V":
+                    break
+                else:
+                    raise ValueError
+            except ValueError:
+                print("\u001b[31mPlease enter a valid orientation (V or H)\n")
+        while True:
+            try:
+                row = input("Which row is your ship positioned on (1-8)? \n")
+                if row in '12345678':
+                    row = int(row) -1
+                    break
 
 welcome_screen()
 display_field(PLAYER_FIELD)
