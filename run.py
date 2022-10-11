@@ -93,15 +93,28 @@ def place_ship(field):
     for ship_length in SHIP_LENGTHS:
         while True:
             if field == COMPUTER_FIELD:
-                orientation, row, column = random.choice(["H", "V"]), \
+                placement, row, column = random.choice(["H", "V"]), \
                     random.randint(0, 7), random.randint(0, 7)
-                if orientation == "H":
+                if placement == "H":
                     for i in range(column, column + ship_length):
                         field[row][i] = "$"
                 else:
                     for i in range(row, row + ship_length):
                         field[column][i] = "$"
-        
+            else:
+                place_ship = True
+                print_slow("Place your ship with a length of " + str(ship_length))
+                row, column, placement = user_placement(place_ship)
+                print("Ship successfully placed\n")
+                if placement == "H":
+                    for i in range(column, column + ship_length):
+                        field[row][i] = "$"
+                else:
+                    for i in range(row, row + ship_length):
+                        field[column][i] = "$"
+                display_field(PLAYER_FIELD)
+                break
+
 
 welcome_screen()
 display_field(PLAYER_FIELD)
