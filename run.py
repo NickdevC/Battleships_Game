@@ -9,7 +9,7 @@ COMPUTER_FIELD = [[" "] * 8 for i in range(8)]
 PLAYER_GUESS = [[" "] * 8 for i in range(8)]
 COMPUTER_GUESS = [[" "] * 8 for i in range(8)]
 
-letters_conversion = {
+letters_to_integers = {
     'A': 0,
     'B': 1,
     'C': 2,
@@ -157,7 +157,31 @@ def player_input(place_ship):
                 column = input("Which column is your ship positioned in \
                     (A-H)? \n").upper()
                 if column in 'ABCDEFGH':
-                    column = 
+                    column = letters_to_integers[column]
+                else:
+                    print("\u001b[31mPlease enter a valid letter between A-H \n")
+                    break
+        return column, row, placement
+    else:
+        while True:
+            try:
+                row = input("Which row is your ship positioned on (1-8)? \n")
+                if row in '12345678':
+                    row = int(row) -1
+                    break
+                else raise ValueError
+            except ValueError:
+                print("\u001b[31mPlease enter a valid integer between 1-8 \n")
+        while True:
+            try:
+                column = input("Which column is your ship positioned in \
+                    (A-H)? \n").upper()
+                if column in 'ABCDEFGH':
+                    column = letters_to_integers[column]
+                else:
+                    print("\u001b[31mPlease enter a valid letter between A-H \n")
+                    break
+        return column, row
 
 welcome_screen()
 display_field(PLAYER_FIELD)
