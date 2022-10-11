@@ -138,6 +138,10 @@ def player_input(place_ship):
                 if row in '12345678':
                     row = int(row) -1
                     break
+                else raise ValueError
+            except ValueError:
+                print("\u001b[31mPlease enter a valid integer between 1-8 \n")
+        
 
 welcome_screen()
 display_field(PLAYER_FIELD)
