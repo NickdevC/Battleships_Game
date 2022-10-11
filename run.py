@@ -2,19 +2,28 @@
 import time
 import sys
 
+
+PLAYER_FIELD = [[" "] * 8 for i in range(8)]
+
 def print_fast(str):
+    """
+    Creates a fast moving typing effect for the user.
+    """
     for letter in str:
         sys.stdout.write(letter)
         sys.stdout.flush()
         time.sleep(0.01)
 
 def print_slow(str):
+    """
+    Creates a slow moving typing effect for the user.
+    """
     for letter in str:
         sys.stdout.write(letter)
         sys.stdout.flush()
         time.sleep(0.05)
 
-
+# Welcome screen message
 def welcome_screen():
     """
     Displays the main screen for users on loading the game for the first time,
@@ -34,7 +43,7 @@ def welcome_screen():
                                          |_| 
 \u001b[0m""")
 
-# Player instructions
+# Player instructions and rules
     print_slow("\n\u001b[34mBefore we begin...let's set out some rules:\n")
     time.sleep(1)
     print_slow("\nYour battlefield consists of an 8x8 grid.\n")
@@ -53,7 +62,19 @@ and destroy them!\n")
     print_slow("\nThe first player to successfuly sink all of their \
 opponent's ships\n") 
     print_slow("(17 successful hits in total) wins!\n")
-    time.sleep(5)
+    time.sleep(2)
+
+def display_field(field):
+    """
+    Displays the battlefield 8x8 grid to the player.
+    """
+    print("  A B C D E F G H")
+    print("  ---------------")
+    row_number = 1
+    for row in field:
+        print("%d|%s|" % (row_number, "|".join(row)))
+        row_number += 1
 
 
 welcome_screen()
+display_field(PLAYER_FIELD)
