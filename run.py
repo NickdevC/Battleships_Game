@@ -9,6 +9,17 @@ COMPUTER_FIELD = [[" "] * 8 for i in range(8)]
 PLAYER_GUESS = [[" "] * 8 for i in range(8)]
 COMPUTER_GUESS = [[" "] * 8 for i in range(8)]
 
+letters_conversion = {
+    'A': 0,
+    'B': 1,
+    'C': 2,
+    'D': 3,
+    'E': 4,
+    'F': 5,
+    'G': 6,
+    'H': 7
+}
+
 def print_fast(str):
     """
     Creates a fast moving typing effect for the user.
@@ -141,7 +152,12 @@ def player_input(place_ship):
                 else raise ValueError
             except ValueError:
                 print("\u001b[31mPlease enter a valid integer between 1-8 \n")
-        
+        while True:
+            try:
+                column = input("Which column is your ship positioned in \
+                    (A-H)? \n").upper()
+                if column in 'ABCDEFGH':
+                    column = 
 
 welcome_screen()
 display_field(PLAYER_FIELD)
