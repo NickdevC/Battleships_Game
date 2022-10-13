@@ -5,9 +5,9 @@ from random import randint
 
 # The four overlapping 'fields' of play 
 PLAYER_FIELD = [[" "] * 8 for i in range(8)]
-COMPUTER_FIELD = [[" "] * 8 for i in range(8)]
+AI_FIELD = [[" "] * 8 for i in range(8)]
 PLAYER_GUESS = [[" "] * 8 for i in range(8)]
-COMPUTER_GUESS = [[" "] * 8 for i in range(8)]
+AI_GUESS = [[" "] * 8 for i in range(8)]
 
 letters_to_integers = {
     'A': 0,
@@ -103,7 +103,7 @@ def place_ship(field):
     """
     for ship_length in SHIP_LENGTHS:
         while True:
-            if field == COMPUTER_FIELD:
+            if field == AI_FIELD:
                 placement, row, column = random.choice(["H", "V"]), \
                     random.randint(0, 7), random.randint(0, 7)
                 if placement == "H":
@@ -230,7 +230,7 @@ def player_computer_cycle(display_field):
             player_computer_cycle(display_field)
         elif display_field[column][row] == "X":
             player_computer_cycle(display_field)
-        elif COMPUTER_FIELD[column][row] == "$":
+        elif AI_FIELD[column][row] == "$":
             display_field[column][row] == "X"
             print_fast("Hit!")
         else:
@@ -249,7 +249,14 @@ def player_computer_cycle(display_field):
             display_field[column][row] = "-"
             print_fast("They missed!")
 
-        
+def start_game():
+    """
+    Executes the game functions.
+    """       
+    start_button = input("Press Enter to begin...\n")
+    place_ship(AI_FIELD)
+    display_field(PLAYER_FIELD)
+    place_ship(PLAYER_FIELD)
 
 welcome_screen()
 display_field(PLAYER_FIELD)
