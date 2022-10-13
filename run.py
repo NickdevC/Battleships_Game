@@ -185,6 +185,21 @@ def player_input(place_ship):
                     break
         return column, row
 
+def check_overlap(SHIP_LENGTH, row, column, placement, display_field):
+    """
+    When users place a ship, checks to see if there is overlap with existing
+    placements. 
+    """
+    if placement == "H":
+        for i in range(column, column + SHIP_LENGTH):
+            if display_field[row][i] == "$":
+                return True
+    else:
+        for i in range(row, row + SHIP_LENGTH):
+            if display_field[column][i] == "$":
+                return True
+    return False
+
 def check_placement(SHIP_LENGTH, row, column, placement):
     """
     Checks that the ship placement fits to the perameters of each field.
@@ -201,6 +216,29 @@ def check_placement(SHIP_LENGTH, row, column, placement):
             return False
         else:
             return True
+
+def player_computer_cycle(display_field):
+    """
+    Cycles through the player and computer turns. Ensures that the
+    computer turn is a random selection using randint method.
+    Indicates when a ship has been successfully hit and provides
+    feedback to user.
+    """
+    if display_field == PLAYER_FIELD:
+        row, column = player_input(PLAYER_FIELD)
+        if display_field[column][row] == "-":
+            player_computer_cycle(display_field)
+        elif display_field[column][row] == "X":
+            player_computer_cycle(display_field)
+        elif COMPUTER_FIELD[column][row] == "$":
+            display_field[column][row] == "X"
+            print_fast("Hit!")
+        else:
+            display_field[column][row] = "-"
+            print_fast("Missed!")
+    else:
+
+        
 
 welcome_screen()
 display_field(PLAYER_FIELD)
