@@ -1,7 +1,7 @@
 # Import libraries
 import time
 import sys
-import random
+from random import randint
 
 # The four overlapping 'fields' of play 
 PLAYER_FIELD = [[" "] * 8 for i in range(8)]
