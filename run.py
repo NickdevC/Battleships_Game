@@ -156,10 +156,10 @@ def player_input(place_ship):
             try:
                 column = input("Which column is your ship positioned in \
                     (A-H)? \n").upper()
-                if column in 'ABCDEFGH':
-                    column = letters_to_integers[column]
-                else:
+                if column not in 'ABCDEFGH':
                     print("\u001b[31mPlease enter a valid letter between A-H \n")
+                else:
+                    column = letters_to_integers[column]
                     break
         return column
         return row
@@ -178,10 +178,10 @@ def player_input(place_ship):
             try:
                 column = input("Which column is your ship positioned in \
                     (A-H)? \n").upper()
-                if column in 'ABCDEFGH':
-                    column = letters_to_integers[column]
-                else:
+                if column not in 'ABCDEFGH':
                     print("\u001b[31mPlease enter a valid letter between A-H \n")
+                else: 
+                    column = letters_to_integers[column]
                     break
         return column
         return row
