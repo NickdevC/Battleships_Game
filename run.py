@@ -149,7 +149,8 @@ def player_input(place_ship):
                 if row in '12345678':
                     row = int(row) -1
                     break
-                else raise ValueError
+                else:
+                    raise ValueError
             except ValueError:
                 print("\u001b[31mPlease enter a valid integer between 1-8 \n")
         while True:
@@ -161,9 +162,7 @@ def player_input(place_ship):
                 else:
                     column = letters_to_integers[column]
                     break
-        return column
-        return row
-        return placement
+        return row, column, placement
     else:
         while True:
             try:
@@ -171,7 +170,8 @@ def player_input(place_ship):
                 if row in '12345678':
                     row = int(row) -1
                     break
-                else raise ValueError
+                else:
+                    raise ValueError
             except ValueError:
                 print("\u001b[31mPlease enter a valid integer between 1-8 \n")
         while True:
@@ -183,8 +183,7 @@ def player_input(place_ship):
                 else: 
                     column = letters_to_integers[column]
                     break
-        return column
-        return row
+        return column, row
 
 welcome_screen()
 display_field(PLAYER_FIELD)
