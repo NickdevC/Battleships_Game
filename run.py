@@ -3,7 +3,7 @@ import time
 import sys
 import random
 
-# Battlefield area variables
+# The four overlapping 'fields' of play 
 PLAYER_FIELD = [[" "] * 8 for i in range(8)]
 COMPUTER_FIELD = [[" "] * 8 for i in range(8)]
 PLAYER_GUESS = [[" "] * 8 for i in range(8)]
@@ -184,6 +184,23 @@ def player_input(place_ship):
                     column = letters_to_integers[column]
                     break
         return column, row
+
+def check_placement(SHIP_LENGTH, row, column, placement):
+    """
+    Checks that the ship placement fits to the perameters of each field.
+    If the check returns 'False' then a error message is raised to user
+    in the place_ship function.
+    """
+    if placement == "H":
+        if column + SHIP_LENGTH > 8:
+            return False
+        else:
+            return True
+    else:
+        if row + SHIP_LENGTH > 8:
+            return False
+        else:
+            return True
 
 welcome_screen()
 display_field(PLAYER_FIELD)
