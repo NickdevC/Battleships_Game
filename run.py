@@ -224,8 +224,8 @@ def player_computer_cycle(display_field):
     Indicates when a ship has been successfully hit and provides
     feedback to user.
     """
-    if display_field == PLAYER_FIELD:
-        row, column = player_input(PLAYER_FIELD)
+    if display_field == PLAYER_GUESS:
+        column, row = player_input(PLAYER_GUESS)
         if display_field[column][row] == "-":
             player_computer_cycle(display_field)
         elif display_field[column][row] == "X":
@@ -237,6 +237,17 @@ def player_computer_cycle(display_field):
             display_field[column][row] = "-"
             print_fast("Missed!")
     else:
+        column, row = random.randint(0, 7), random.randint(0, 7)
+        if display_field[column][row] == "-":
+            player_computer_cycle(display_field)
+        elif display_field[column][row] == "X":
+            player_computer_cycle(display_field)
+        elif PLAYER_FIELD[column][row] == "$":
+            display_field[column][row] == "X"
+            print_fast("We have been hit!")
+        else:
+            display_field[column][row] = "-"
+            print_fast("They missed!")
 
         
 
