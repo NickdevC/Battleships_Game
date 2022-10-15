@@ -4,10 +4,10 @@ import sys
 from random import randint
 
 # The four overlapping 'fields' of play 
-PLAYER_FIELD = [[" "] * 8 for i in range(8)]
-AI_FIELD = [[" "] * 8 for i in range(8)]
-PLAYER_GUESS = [[" "] * 8 for i in range(8)]
-AI_GUESS = [[" "] * 8 for i in range(8)]
+PLAYER_FIELD = [[" "] * 10 for i in range(10)]
+AI_FIELD = [[" "] * 10 for i in range(10)]
+PLAYER_GUESS = [[" "] * 10 for i in range(10)]
+AI_GUESS = [[" "] * 10 for i in range(10)]
 
 letters_to_integers = {
     'A': 0,
@@ -17,8 +17,11 @@ letters_to_integers = {
     'E': 4,
     'F': 5,
     'G': 6,
-    'H': 7
+    'H': 7,
+    'I': 8,
+    'J': 9,
 }
+
 
 def print_fast(str):
     """
@@ -29,6 +32,7 @@ def print_fast(str):
         sys.stdout.flush()
         time.sleep(0.01)
 
+
 def print_slow(str):
     """
     Creates a slow moving typing effect for the user.
@@ -38,8 +42,10 @@ def print_slow(str):
         sys.stdout.flush()
         time.sleep(0.05)
 
+
 # Contains the length of each ship on the battlefield area
 SHIP_LENGTHS = [2, 3, 3, 4, 5]
+
 
 # Welcome screen message
 def welcome_screen():
@@ -64,7 +70,7 @@ def welcome_screen():
 # Player instructions and rules
     print_slow("\n\u001b[34mBefore we begin...let's set out some rules:\n")
     time.sleep(1)
-    print_slow("\nYour battlefield consists of an 8x8 grid.\n")
+    print_slow("\nYour battlefield consists of an 10x10 grid.\n")
     print_slow("\nYou will have access to the following vessels:\n")
     time.sleep(1)
     print("\n\u001b[31mDESTROYER - 2 spaces on the grid\n")
@@ -82,18 +88,20 @@ opponent's ships\n")
     print_slow("(17 successful hits in total) wins!\n")
     time.sleep(2)
 
+
 def display_field(field):
     """
     Displays the battlefield 8x8 grid to the player, ensuring
     placeholders are present to allow manipulation throughout
     the game.
     """
-    print("  A B C D E F G H")
-    print("  ---------------")
+    print("  A B C D E F G H I J")
+    print("  ------------------")
     row_number = 1
     for row in field:
         print("%d|%s|" % (row_number, "|".join(row)))
         row_number += 1
+
 
 def place_ship(field):
     """
@@ -105,7 +113,7 @@ def place_ship(field):
         while True:
             if field == AI_FIELD:
                 placement, row, column = random.choice(["H", "V"]), \
-                    random.randint(0, 7), random.randint(0, 7)
+                    random.randint(0, 9), random.randint(0, 9)
                 if placement == "H":
                     for i in range(column, column + ship_length):
                         field[row][i] = "$"
@@ -126,64 +134,67 @@ def place_ship(field):
                 display_field(PLAYER_FIELD)
                 break
 
+
 def player_input(place_ship):
     """
     Allows the user to input coordinate data to place their
     ships and also signal where they wish to target their
-    opponents ships.
+    opponents' ships.
     """
     if place_ship == True:
         while True:
             try:
-                placement = input("Is your ship positioned vertically(V) \
-                    or horizontally(H)? \n").upper()
+                placement = input("Vertical(V) or horizontal(H) placement?\n")
                 if placement == "H" or "V":
                     break
                 else:
                     raise ValueError
             except ValueError:
-                print("\u001b[31mPlease enter a valid orientation (V or H)\n")
+                print("Please enter a valid orientation (V or H)\n")
         while True:
             try:
-                row = input("Which row is your ship positioned on (1-8)? \n")
-                if row in '12345678':
+                row = input("Which row (1-10)?\n")
+                if row in "1,2,3,4,5,6,7,8,9,10":
                     row = int(row) -1
                     break
                 else:
                     raise ValueError
             except ValueError:
-                print("\u001b[31mPlease enter a valid integer between 1-8 \n")
+                print("Please enter a valid integer between 1-10\n")
         while True:
             try:
-                column = input("Which column is your ship positioned in \
-                    (A-H)? \n").upper()
-                if column not in 'ABCDEFGH':
-                    print("\u001b[31mPlease enter a valid letter between A-H \n")
+                column = input("Which column (A-J)?\n")
+                if column not in "A,B,C,D,E,F,G,H,I,J":
+                    print("Please enter a valid letter (A-J)\n")
                 else:
                     column = letters_to_integers[column]
                     break
+            except KeyError:
+                print("Please enter a valid letter (A-J)\n")
         return row, column, placement
     else:
         while True:
             try:
-                row = input("Which row is your ship positioned on (1-8)? \n")
-                if row in '12345678':
+                row = input("Which row (1-10)?\n")
+                if row in "1,2,3,4,5,6,7,8,9,10":
                     row = int(row) -1
                     break
                 else:
                     raise ValueError
             except ValueError:
-                print("\u001b[31mPlease enter a valid integer between 1-8 \n")
+                print("Please enter a valid integer between 1-10\n")
         while True:
             try:
-                column = input("Which column is your ship positioned in \
-                    (A-H)? \n").upper()
-                if column not in 'ABCDEFGH':
-                    print("\u001b[31mPlease enter a valid letter between A-H \n")
-                else: 
+                column = input("Which column (A-J)?\n")
+                if column not in "A,B,C,D,E,F,G,H,I,J":
+                    print("Please enter a valid letter (A-J)\n")
+                else:
                     column = letters_to_integers[column]
                     break
-        return column, row
+            except KeyError:
+                print("Please enter a valid letter (A-J)\n")
+        return row, column
+
 
 def check_overlap(SHIP_LENGTH, row, column, placement, display_field):
     """
@@ -200,6 +211,7 @@ def check_overlap(SHIP_LENGTH, row, column, placement, display_field):
                 return True
     return False
 
+
 def check_placement(SHIP_LENGTH, row, column, placement):
     """
     Checks that the ship placement fits to the perameters of each field.
@@ -207,12 +219,12 @@ def check_placement(SHIP_LENGTH, row, column, placement):
     in the place_ship function.
     """
     if placement == "H":
-        if column + SHIP_LENGTH > 8:
+        if column + SHIP_LENGTH > 10:
             return False
         else:
             return True
     else:
-        if row + SHIP_LENGTH > 8:
+        if row + SHIP_LENGTH > 10:
             return False
         else:
             return True
@@ -237,7 +249,7 @@ def player_computer_cycle(display_field):
             display_field[column][row] = "-"
             print_fast("Missed!")
     else:
-        column, row = random.randint(0, 7), random.randint(0, 7)
+        column, row = random.randint(0, 9), random.randint(0, 9)
         if display_field[column][row] == "-":
             player_computer_cycle(display_field)
         elif display_field[column][row] == "X":
@@ -259,4 +271,3 @@ def start_game():
     place_ship(PLAYER_FIELD)
 
 welcome_screen()
-display_field(PLAYER_FIELD)
