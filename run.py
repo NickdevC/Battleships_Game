@@ -282,7 +282,7 @@ def start_game():
     """
     Executes the game functions.
     """
-    start_button = input("Press Enter to begin...\n")
+    input("Press Enter to begin...\n")
     place_ship(AI_FIELD)
     display_field(PLAYER_FIELD)
     place_ship(PLAYER_FIELD)
