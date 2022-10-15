@@ -204,7 +204,7 @@ def player_input(place_ship):
 def check_overlap(SHIP_LENGTH, row, column, placement, display_field):
     """
     When users place a ship, checks to see if there is overlap with existing
-    placements. 
+    placements.
     """
     if placement == "H":
         for i in range(column, column + SHIP_LENGTH):
@@ -280,5 +280,14 @@ def start_game():
     while True:
         while True:
             print_fast("Your turn! Start firing!\n")
+            display_field(PLAYER_GUESS)
+            player_computer_cycle(PLAYER_GUESS)
+            break
+        while True:
+            player_computer_cycle(AI_GUESS)
+            break
+        display_field(AI_GUESS)
+
 
 welcome_screen()
+start_game()
