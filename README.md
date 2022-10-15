@@ -1,6 +1,6 @@
 <h1 align="center"> :anchor: Battleships Game :anchor: </h1>
 
-[View the live project here](http://nickdevc.github.io/Film_Quiz/)
+[View the live project here](https://nickdevc-battleships.herokuapp.com/)
 
 Based on the popular, classic boardgame, Battleships is a Python terminal game running on Heroku. It provides 4x overlapping fields of play, allowing the user to place their ships and also target those of the computer. The user manually selects their ship placements, whilst the computer is randomly assigned coordinates. The game is won when all 5 of the opponent's ships have been destroyed!
 
