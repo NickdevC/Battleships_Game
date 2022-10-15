@@ -3,7 +3,7 @@ import time
 import sys
 import random
 
-# The four overlapping 'fields' of play 
+# The four overlapping 'fields' of play
 PLAYER_FIELD = [[" "] * 10 for i in range(10)]
 AI_FIELD = [[" "] * 10 for i in range(10)]
 PLAYER_GUESS = [[" "] * 10 for i in range(10)]
@@ -57,7 +57,7 @@ def welcome_screen():
     time.sleep(3)
     print_fast("""\
     \u001b[34m
-  ____        _   _   _           _     _           
+  ____        _   _   _           _     _         
  |  _ \      | | | | | |         | |   (_)                       |    |    |
  | |_) | __ _| |_| |_| | ___  ___| |__  _ _ __  ___             )_)  )_)  )_)
  |  _ < / _` | __| __| |/ _ \/ __| '_ \| | '_ \/ __|           )___))___))___)
@@ -84,7 +84,7 @@ battlefield - think tactically!\n")
     print_slow("\nIt is then up to you to route out the enemy's ships \
 and destroy them!\n")
     print_slow("\nThe first player to successfuly sink all of their \
-opponent's ships wins!\n") 
+opponent's ships wins!\n")
     time.sleep(2)
 
 
@@ -104,7 +104,7 @@ def display_field(field):
 
 def place_ship(field):
     """
-    Allows the computer and player to place their ships on the 
+    Allows the computer and player to place their ships on the
     battlefield area. The function loops through the various ship
     lengths and checks to see if there is overlap during user input.
     """
@@ -114,7 +114,8 @@ def place_ship(field):
                 placement, row, column = random.choice(["H", "V"]), \
                     random.randint(0, 9), random.randint(0, 9)
                 if check_placement(ship_length, row, column, placement):
-                    if not check_overlap(ship_length, row, column, placement, display_field):
+                    if not check_overlap(ship_length, row, column, placement,
+                                         display_field):
                         if placement == "H":
                             for i in range(column, column + ship_length):
                                 field[row][i] = "$"
@@ -127,7 +128,8 @@ def place_ship(field):
                 print_slow("Place your ship with a length of " + str(ship_length))
                 row, column, placement = player_input(place_ship)
                 if check_placement(ship_length, row, column, placement):
-                    if check_overlap(ship_length, row, column, placement, display_field):
+                    if check_overlap(ship_length, row, column, placement,
+                                     display_field):
                         print("Cannot place ship. Pick again!\n")
                     else:
                         if placement == "H":
@@ -146,7 +148,7 @@ def player_input(place_ship):
     ships and also signal where they wish to target their
     opponents' ships.
     """
-    if place_ship == True:
+    if place_ship:
         while True:
             try:
                 placement = input("Vertical(V) or horizontal(H) placement?\n")
@@ -271,7 +273,7 @@ def player_computer_cycle(display_field):
 def start_game():
     """
     Executes the game functions.
-    """       
+    """
     start_button = input("Press Enter to begin...\n")
     place_ship(AI_FIELD)
     display_field(PLAYER_FIELD)
