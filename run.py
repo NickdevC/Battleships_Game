@@ -16,7 +16,7 @@ letters_to_integers = {
     'D': 3,
     'E': 4,
     'F': 5,
-    'G': 6,
+    'G': 6
 }
 
 
