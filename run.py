@@ -4,10 +4,10 @@ import sys
 import random
 
 # The four overlapping 'fields' of play
-PLAYER_FIELD = [[" "] * 10 for i in range(10)]
-AI_FIELD = [[" "] * 10 for i in range(10)]
-PLAYER_GUESS = [[" "] * 10 for i in range(10)]
-AI_GUESS = [[" "] * 10 for i in range(10)]
+PLAYER_FIELD = [[" "] * 9 for i in range(9)]
+AI_FIELD = [[" "] * 9 for i in range(9)]
+PLAYER_GUESS = [[" "] * 9 for i in range(9)]
+AI_GUESS = [[" "] * 9 for i in range(9)]
 
 letters_to_integers = {
     'A': 0,
@@ -18,8 +18,7 @@ letters_to_integers = {
     'F': 5,
     'G': 6,
     'H': 7,
-    'I': 8,
-    'J': 9,
+    'I': 8
 }
 
 
@@ -64,7 +63,7 @@ def welcome_screen():
      ----\                /----
     ^^^   ^^^^   ^^^  ^^^^   ^^  ^^
         ^^^    ^^    ^^^^   ^^
-                    ____        _   _   _           _     _           
+                     ____        _   _   _           _     _           
                     |  _ \      | | | | | |         | |   (_)          
                     | |_) | __ _| |_| |_| | ___  ___| |__  _ _ __  ___ 
                     |  _ < / _` | __| __| |/ _ \/ __| '_ \| | '_ \/ __|
@@ -77,7 +76,7 @@ def welcome_screen():
 # Player instructions and rules
     print_slow("\n\u001b[34mBefore we begin...let's set out some rules:\n")
     time.sleep(1)
-    print_slow("\nYour battlefield consists of an 10x10 grid.\n")
+    print_slow("\nYour battlefield consists of an 9x9 grid.\n")
     print_slow("\nYou will have access to the following vessels:\n")
     time.sleep(1)
     print("\n\u001b[31mDESTROYER - 2 spaces on the grid\n")
@@ -101,7 +100,7 @@ def display_field(field):
     placeholders are present to allow manipulation throughout
     the game.
     """
-    print("  A B C D E F G H I J")
+    print("  A B C D E F G H I")
     print("  ------------------")
     row_number = 1
     for row in field:
@@ -119,10 +118,10 @@ def place_ship(field):
         while True:
             if field == AI_FIELD:
                 placement, row, column = random.choice(["H", "V"]), \
-                    random.randint(0, 9), random.randint(0, 9)
+                    random.randint(0, 8), random.randint(0, 8)
                 if check_placement(ship_length, row, column, placement):
                     if not check_overlap(field, row, column, placement,
-                                         display_field):
+                                         ship_length):
                         if placement == "H":
                             for i in range(column, column + ship_length):
                                 field[row][i] = "$"
@@ -132,12 +131,12 @@ def place_ship(field):
                         break
             else:
                 place_ship = True
-                print_slow('Place your ship with a length of ' +
-                           str(ship_length))
+                print_slow('Place your ship with a length \
+                            of ' + str(ship_length))
                 row, column, placement = player_input(place_ship)
                 if check_placement(ship_length, row, column, placement):
                     if check_overlap(field, row, column, placement,
-                                     display_field):
+                                     ship_length):
                         print("Cannot place ship. Pick again!\n")
                     else:
                         if placement == "H":
@@ -156,11 +155,12 @@ def player_input(place_ship):
     ships and also signal where they wish to target their
     opponents' ships.
     """
-    if place_ship:
+    if place_ship == True:
         while True:
             try:
-                placement = input("Vertical(V) or horizontal(H) placement?\n")
-                if placement == "H" or "V":
+                placement = input("Vertical(V) or horizontal(H) \
+                                    placement?\n").upper()
+                if placement == "H" or placement == "V":
                     break
                 else:
                     raise ValueError
@@ -168,60 +168,60 @@ def player_input(place_ship):
                 print("Please enter a valid orientation (V or H)\n")
         while True:
             try:
-                row = input("Which row (1-10)?\n")
-                if row in "1,2,3,4,5,6,7,8,9,10":
+                row = input("Which row (1-9)?\n")
+                if row in "123456789":
                     row = int(row)-1
                     break
                 else:
                     raise ValueError
             except ValueError:
-                print("Please enter a valid integer between 1-10\n")
+                print("Please enter a valid integer between 1-9\n")
         while True:
             try:
-                column = input("Which column (A-J)?\n")
-                if column not in "A,B,C,D,E,F,G,H,I,J":
-                    print("Please enter a valid letter (A-J)\n")
+                column = input("Which column (A-I)?\n")
+                if column not in "ABCDEFGHI":
+                    print("Please enter a valid letter (A-I)\n")
                 else:
                     column = letters_to_integers[column]
                     break
             except KeyError:
-                print("Please enter a valid letter (A-J)\n")
+                print("Please enter a valid letter (A-I)\n")
         return row, column, placement
     else:
         while True:
             try:
-                row = input("Which row (1-10)?\n")
-                if row in "1,2,3,4,5,6,7,8,9,10":
+                row = input("Which row (1-9)?\n")
+                if row in "123456789":
                     row = int(row) - 1
                     break
                 else:
                     raise ValueError
             except ValueError:
-                print("Please enter a valid integer between 1-10\n")
+                print("Please enter a valid integer between 1-9\n")
         while True:
             try:
-                column = input("Which column (A-J)?\n")
-                if column not in "A,B,C,D,E,F,G,H,I,J":
-                    print("Please enter a valid letter (A-J)\n")
+                column = input("Which column (A-I)?\n")
+                if column not in "ABCDEFGHI":
+                    print("Please enter a valid letter (A-I)\n")
                 else:
                     column = letters_to_integers[column]
                     break
             except KeyError:
-                print("Please enter a valid letter (A-J)\n")
+                print("Please enter a valid letter (A-I)\n")
         return row, column
 
 
-def check_overlap(field, row, column, placement, SHIP_LENGTH):
+def check_overlap(field, row, column, placement, ship_length):
     """
     When users place a ship, checks to see if there is overlap with existing
     placements.
     """
     if placement == "H":
-        for i in range(column, column + SHIP_LENGTH):
+        for i in range(column, column + ship_length):
             if field[row][i] == "$":
                 return True
     else:
-        for i in range(row, row + SHIP_LENGTH):
+        for i in range(row, row + ship_length):
             if field[column][i] == "$":
                 return True
     return False
@@ -234,12 +234,12 @@ def check_placement(SHIP_LENGTH, row, column, placement):
     in the place_ship function.
     """
     if placement == "H":
-        if column + SHIP_LENGTH > 10:
+        if column + SHIP_LENGTH > 9:
             return False
         else:
             return True
     else:
-        if row + SHIP_LENGTH > 10:
+        if row + SHIP_LENGTH > 9:
             return False
         else:
             return True
@@ -265,7 +265,7 @@ def player_computer_cycle(field):
             field[column][row] = "-"
             print_fast("Missed!")
     else:
-        column, row = random.randint(0, 9), random.randint(0, 9)
+        column, row = random.randint(0, 8), random.randint(0, 8)
         if field[column][row] == "-":
             player_computer_cycle(display_field)
         elif field[column][row] == "X":
@@ -280,8 +280,8 @@ def player_computer_cycle(field):
 
 def hit_counter(field):
     """
-    The hit_count function counts the number of hits each board (Player,
-    Computer) has taken
+    Counts the number of successful hits made by the player and
+    computer.
     """
     count = 0
     for row in field:
