@@ -56,15 +56,22 @@ def welcome_screen():
     print_slow("\033[34m Got ships? Let's battle!\n")
     time.sleep(3)
     print_fast("""\
-    \u001b[34m
-  ____        _   _   _           _     _         
- |  _ \      | | | | | |         | |   (_)                       |    |    |
- | |_) | __ _| |_| |_| | ___  ___| |__  _ _ __  ___             )_)  )_)  )_)
- |  _ < / _` | __| __| |/ _ \/ __| '_ \| | '_ \/ __|           )___))___))___)
- | |_) | (_| | |_| |_| |  __/\__ \ | | | | |_) \__ |         ____|____|____|___
- |____/ \__,_|\__|\__|_|\___||___/_| |_|_| .__/|___/     ----\                /----
-                                         | |           ^^^   ^^^^   ^^^  ^^^^   ^^
-                                         |_|              ^^^    ^^    ^^^^   ^^
+    \u001b[34m      
+             |    |    |
+            )_)  )_)  )_)             
+           )___))___))___)
+         ____|____|____|___
+     ----\                /----
+    ^^^   ^^^^   ^^^  ^^^^   ^^  ^^
+        ^^^    ^^    ^^^^   ^^
+                    ____        _   _   _           _     _           
+                    |  _ \      | | | | | |         | |   (_)          
+                    | |_) | __ _| |_| |_| | ___  ___| |__  _ _ __  ___ 
+                    |  _ < / _` | __| __| |/ _ \/ __| '_ \| | '_ \/ __|
+                    | |_) | (_| | |_| |_| |  __/\__ \ | | | | |_) \__ |
+                    |____/ \__,_|\__|\__|_|\___||___/_| |_|_| .__/|___/
+                                                            | |        
+                                                            |_| 
 \u001b[0m""")
 
 # Player instructions and rules
@@ -125,7 +132,8 @@ def place_ship(field):
                         break
             else:
                 place_ship = True
-                print_slow("Place your ship with a length of " + str(ship_length))
+                print_slow("Place your ship with a length of " + 
+                           str(ship_length))
                 row, column, placement = player_input(place_ship)
                 if check_placement(ship_length, row, column, placement):
                     if check_overlap(ship_length, row, column, placement,
@@ -184,7 +192,7 @@ def player_input(place_ship):
             try:
                 row = input("Which row (1-10)?\n")
                 if row in "1,2,3,4,5,6,7,8,9,10":
-                    row = int(row) -1
+                    row = int(row) - 1
                     break
                 else:
                     raise ValueError
