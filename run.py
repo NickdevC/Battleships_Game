@@ -20,21 +20,21 @@ letters_to_integers = {
 }
 
 
-def print_fast(str):
+def print_fast(fast):
     """
     Creates a fast moving typing effect for the user.
     """
-    for letter in str:
+    for letter in fast:
         sys.stdout.write(letter)
         sys.stdout.flush()
         time.sleep(0.01)
 
 
-def print_slow(str):
+def print_slow(slow):
     """
     Creates a slow moving typing effect for the user.
     """
-    for letter in str:
+    for letter in slow:
         sys.stdout.write(letter)
         sys.stdout.flush()
         time.sleep(0.05)
@@ -129,8 +129,8 @@ def place_ship(field):
                         break
             else:
                 place_ship = True
-                print_slow('Place your ship with a length \
-                            of ' + str(ship_length))
+                print_slow("Place your ship with a length of "
+                           + str(ship_length))
                 row, column, placement = player_input(place_ship)
                 if check_placement(ship_length, row, column, placement):
                     if check_overlap(field, row, column, placement,
@@ -138,11 +138,11 @@ def place_ship(field):
                         print("Cannot place ship. Pick again!\n")
                     else:
                         if placement == "H":
-                            for i in range(column, column + ship_length):
-                                field[row][i] = "$"
-                        else:
                             for i in range(row, row + ship_length):
                                 field[column][i] = "$"
+                        else:
+                            for i in range(column, column + ship_length):
+                                field[row][i] = "$"
                         display_field(PLAYER_FIELD)
                         break
 
@@ -156,8 +156,8 @@ def player_input(place_ship):
     if place_ship == True:
         while True:
             try:
-                placement = input("Vertical(V) or horizontal(H) \
-                                    placement?\n").upper()
+                placement = input("\nVertical(V) or horizontal(H) placement?")\
+                                  .upper()
                 if placement == "H" or placement == "V":
                     break
                 else:
@@ -293,9 +293,9 @@ def start_game():
     """
     Executes the game functions.
     """
-    start_button = input("Press B to begin...\n").upper()
+    start_button = input("Type B and enter to begin...\n").upper()
     while start_button != 'B':
-        start_button = input("Press B to begin...\n").upper()
+        start_button = input("Type B to begin...\n").upper()
     place_ship(AI_FIELD)
     display_field(PLAYER_FIELD)
     place_ship(PLAYER_FIELD)
