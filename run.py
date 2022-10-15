@@ -282,7 +282,9 @@ def start_game():
     """
     Executes the game functions.
     """
-    input("Press Enter to begin...\n")
+    start_button = input("Press B to begin...\n").upper()
+    while start_button != 'B':
+        start_button = input("Press B to begin...\n").upper()
     place_ship(AI_FIELD)
     display_field(PLAYER_FIELD)
     place_ship(PLAYER_FIELD)
