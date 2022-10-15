@@ -1,7 +1,7 @@
 # Import libraries
 import time
 import sys
-from random import randint
+import random
 
 # The four overlapping 'fields' of play 
 PLAYER_FIELD = [[" "] * 10 for i in range(10)]
@@ -123,7 +123,7 @@ def place_ship(field):
             else:
                 place_ship = True
                 print_slow("Place your ship with a length of " + str(ship_length))
-                row, column, placement = user_placement(place_ship)
+                row, column, placement = player_input(place_ship)
                 print("Ship successfully placed\n")
                 if placement == "H":
                     for i in range(column, column + ship_length):
@@ -229,6 +229,7 @@ def check_placement(SHIP_LENGTH, row, column, placement):
         else:
             return True
 
+
 def player_computer_cycle(display_field):
     """
     Cycles through the player and computer turns. Ensures that the
@@ -261,6 +262,7 @@ def player_computer_cycle(display_field):
             display_field[column][row] = "-"
             print_fast("They missed!")
 
+
 def start_game():
     """
     Executes the game functions.
@@ -269,5 +271,6 @@ def start_game():
     place_ship(AI_FIELD)
     display_field(PLAYER_FIELD)
     place_ship(PLAYER_FIELD)
+
 
 welcome_screen()
