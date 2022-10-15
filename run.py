@@ -84,8 +84,7 @@ battlefield - think tactically!\n")
     print_slow("\nIt is then up to you to route out the enemy's ships \
 and destroy them!\n")
     print_slow("\nThe first player to successfuly sink all of their \
-opponent's ships\n") 
-    print_slow("(17 successful hits in total) wins!\n")
+opponent's ships wins!\n") 
     time.sleep(2)
 
 
@@ -114,25 +113,31 @@ def place_ship(field):
             if field == AI_FIELD:
                 placement, row, column = random.choice(["H", "V"]), \
                     random.randint(0, 9), random.randint(0, 9)
-                if placement == "H":
-                    for i in range(column, column + ship_length):
-                        field[row][i] = "$"
-                else:
-                    for i in range(row, row + ship_length):
-                        field[column][i] = "$"
+                if check_placement(ship_length, row, column, placement):
+                    if not check_overlap(ship_length, row, column, placement, display_field):
+                        if placement == "H":
+                            for i in range(column, column + ship_length):
+                                field[row][i] = "$"
+                        else:
+                            for i in range(row, row + ship_length):
+                                field[column][i] = "$"
+                        break
             else:
                 place_ship = True
                 print_slow("Place your ship with a length of " + str(ship_length))
                 row, column, placement = player_input(place_ship)
-                print("Ship successfully placed\n")
-                if placement == "H":
-                    for i in range(column, column + ship_length):
-                        field[row][i] = "$"
-                else:
-                    for i in range(row, row + ship_length):
-                        field[column][i] = "$"
-                display_field(PLAYER_FIELD)
-                break
+                if check_placement(ship_length, row, column, placement):
+                    if check_overlap(ship_length, row, column, placement, display_field):
+                        print("Cannot place ship. Pick again!\n")
+                    else:
+                        if placement == "H":
+                            for i in range(column, column + ship_length):
+                                field[row][i] = "$"
+                        else:
+                            for i in range(row, row + ship_length):
+                                field[column][i] = "$"
+                        display_field(PLAYER_FIELD)
+                        break
 
 
 def player_input(place_ship):
@@ -155,7 +160,7 @@ def player_input(place_ship):
             try:
                 row = input("Which row (1-10)?\n")
                 if row in "1,2,3,4,5,6,7,8,9,10":
-                    row = int(row) -1
+                    row = int(row)-1
                     break
                 else:
                     raise ValueError
@@ -272,5 +277,8 @@ def start_game():
     display_field(PLAYER_FIELD)
     place_ship(PLAYER_FIELD)
 
+    while True:
+        while True:
+            print_fast("Your turn! Start firing!\n")
 
 welcome_screen()
