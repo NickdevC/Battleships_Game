@@ -96,7 +96,7 @@ opponent's ships wins!\n")
 
 def display_field(field):
     """
-    Displays the battlefield 8x8 grid to the player, ensuring
+    Displays the battlefield 9x9 grid to the player, ensuring
     placeholders are present to allow manipulation throughout
     the game.
     """
@@ -170,7 +170,7 @@ def player_input(place_ship):
             try:
                 row = input("Which row (1-9)?\n")
                 if row in "123456789":
-                    row = int(row)-1
+                    row = int(row) - 1
                     break
                 else:
                     raise ValueError
@@ -178,7 +178,7 @@ def player_input(place_ship):
                 print("Please enter a valid integer between 1-9\n")
         while True:
             try:
-                column = input("Which column (A-I)?\n")
+                column = input("Which column (A-I)?\n").upper()
                 if column not in "ABCDEFGHI":
                     print("Please enter a valid letter (A-I)\n")
                 else:
@@ -200,7 +200,7 @@ def player_input(place_ship):
                 print("Please enter a valid integer between 1-9\n")
         while True:
             try:
-                column = input("Which column (A-I)?\n")
+                column = input("Which column (A-I)?\n").upper()
                 if column not in "ABCDEFGHI":
                     print("Please enter a valid letter (A-I)\n")
                 else:
@@ -253,28 +253,28 @@ def player_computer_cycle(field):
     feedback to user.
     """
     if field == PLAYER_GUESS:
-        column, row = player_input(PLAYER_GUESS)
-        if field[column][row] == "-":
-            player_computer_cycle(display_field)
-        elif field[column][row] == "X":
-            player_computer_cycle(display_field)
-        elif AI_FIELD[column][row] == "$":
-            field[column][row] == "X"
+        row, column = player_input(PLAYER_GUESS)
+        if field[row][column] == "-":
+            player_computer_cycle(field)
+        elif field[row][column] == "X":
+            player_computer_cycle(field)
+        elif AI_FIELD[row][column] == "$":
+            field[row][column] = "X"
             print_fast("Hit!")
         else:
-            field[column][row] = "-"
+            field[row][column] = "-"
             print_fast("Missed!")
     else:
-        column, row = random.randint(0, 8), random.randint(0, 8)
-        if field[column][row] == "-":
-            player_computer_cycle(display_field)
-        elif field[column][row] == "X":
-            player_computer_cycle(display_field)
-        elif PLAYER_FIELD[column][row] == "$":
-            field[column][row] == "X"
+        row, column = random.randint(0, 8), random.randint(0, 8)
+        if field[row][column] == "-":
+            player_computer_cycle(field)
+        elif field[row][column] == "X":
+            player_computer_cycle(field)
+        elif PLAYER_FIELD[row][column] == "$":
+            field[row][column] = "X"
             print_fast("We have been hit!")
         else:
-            field[column][row] = "-"
+            field[row][column] = "-"
             print_fast("They missed!")
 
 
@@ -315,6 +315,9 @@ def start_game():
             player_computer_cycle(AI_GUESS)
             break
         display_field(AI_GUESS)
+        if hit_counter(AI_GUESS) == 17:
+            print("You have been bested on the high seas!")
+            break
 
 
 welcome_screen()
