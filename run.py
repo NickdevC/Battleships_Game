@@ -121,7 +121,7 @@ def place_ship(field):
                 placement, row, column = random.choice(["H", "V"]), \
                     random.randint(0, 9), random.randint(0, 9)
                 if check_placement(ship_length, row, column, placement):
-                    if not check_overlap(ship_length, row, column, placement,
+                    if not check_overlap(field, row, column, placement,
                                          display_field):
                         if placement == "H":
                             for i in range(column, column + ship_length):
@@ -132,11 +132,11 @@ def place_ship(field):
                         break
             else:
                 place_ship = True
-                print_slow("Place your ship with a length of " + 
+                print_slow('Place your ship with a length of ' +
                            str(ship_length))
                 row, column, placement = player_input(place_ship)
                 if check_placement(ship_length, row, column, placement):
-                    if check_overlap(ship_length, row, column, placement,
+                    if check_overlap(field, row, column, placement,
                                      display_field):
                         print("Cannot place ship. Pick again!\n")
                     else:
@@ -211,18 +211,18 @@ def player_input(place_ship):
         return row, column
 
 
-def check_overlap(SHIP_LENGTH, row, column, placement, display_field):
+def check_overlap(field, row, column, placement, SHIP_LENGTH):
     """
     When users place a ship, checks to see if there is overlap with existing
     placements.
     """
     if placement == "H":
         for i in range(column, column + SHIP_LENGTH):
-            if display_field[row][i] == "$":
+            if field[row][i] == "$":
                 return True
     else:
         for i in range(row, row + SHIP_LENGTH):
-            if display_field[column][i] == "$":
+            if field[column][i] == "$":
                 return True
     return False
 
@@ -245,36 +245,36 @@ def check_placement(SHIP_LENGTH, row, column, placement):
             return True
 
 
-def player_computer_cycle(display_field):
+def player_computer_cycle(field):
     """
     Cycles through the player and computer turns. Ensures that the
     computer turn is a random selection using randint method.
     Indicates when a ship has been successfully hit and provides
     feedback to user.
     """
-    if display_field == PLAYER_GUESS:
+    if field == PLAYER_GUESS:
         column, row = player_input(PLAYER_GUESS)
-        if display_field[column][row] == "-":
+        if field[column][row] == "-":
             player_computer_cycle(display_field)
-        elif display_field[column][row] == "X":
+        elif field[column][row] == "X":
             player_computer_cycle(display_field)
         elif AI_FIELD[column][row] == "$":
-            display_field[column][row] == "X"
+            field[column][row] == "X"
             print_fast("Hit!")
         else:
-            display_field[column][row] = "-"
+            field[column][row] = "-"
             print_fast("Missed!")
     else:
         column, row = random.randint(0, 9), random.randint(0, 9)
-        if display_field[column][row] == "-":
+        if field[column][row] == "-":
             player_computer_cycle(display_field)
-        elif display_field[column][row] == "X":
+        elif field[column][row] == "X":
             player_computer_cycle(display_field)
         elif PLAYER_FIELD[column][row] == "$":
-            display_field[column][row] == "X"
+            field[column][row] == "X"
             print_fast("We have been hit!")
         else:
-            display_field[column][row] = "-"
+            field[column][row] = "-"
             print_fast("They missed!")
 
 
