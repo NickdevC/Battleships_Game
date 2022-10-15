@@ -278,6 +278,19 @@ def player_computer_cycle(field):
             print_fast("They missed!")
 
 
+def hit_counter(field):
+    """
+    The hit_count function counts the number of hits each board (Player,
+    Computer) has taken
+    """
+    count = 0
+    for row in field:
+        for column in row:
+            if column == "X":
+                count += 1
+    return count
+
+
 def start_game():
     """
     Executes the game functions.
@@ -294,6 +307,9 @@ def start_game():
             print_fast("Your turn! Start firing!\n")
             display_field(PLAYER_GUESS)
             player_computer_cycle(PLAYER_GUESS)
+            break
+        if hit_counter(PLAYER_GUESS) == 17:
+            print("All enemy ships hit - you win!")
             break
         while True:
             player_computer_cycle(AI_GUESS)
