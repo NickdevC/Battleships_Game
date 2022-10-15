@@ -4,10 +4,10 @@ import sys
 import random
 
 # The four overlapping 'fields' of play
-PLAYER_FIELD = [[" "] * 9 for i in range(9)]
-AI_FIELD = [[" "] * 9 for i in range(9)]
-PLAYER_GUESS = [[" "] * 9 for i in range(9)]
-AI_GUESS = [[" "] * 9 for i in range(9)]
+PLAYER_FIELD = [[" "] * 7 for i in range(7)]
+AI_FIELD = [[" "] * 7 for i in range(7)]
+PLAYER_GUESS = [[" "] * 7 for i in range(7)]
+AI_GUESS = [[" "] * 7 for i in range(7)]
 
 letters_to_integers = {
     'A': 0,
@@ -17,8 +17,6 @@ letters_to_integers = {
     'E': 4,
     'F': 5,
     'G': 6,
-    'H': 7,
-    'I': 8
 }
 
 
@@ -76,7 +74,7 @@ def welcome_screen():
 # Player instructions and rules
     print_slow("\n\u001b[34mBefore we begin...let's set out some rules:\n")
     time.sleep(1)
-    print_slow("\nYour battlefield consists of an 9x9 grid.\n")
+    print_slow("\nYour battlefield consists of an 7x7 grid.\n")
     print_slow("\nYou will have access to the following vessels:\n")
     time.sleep(1)
     print("\n\u001b[31mDESTROYER - 2 spaces on the grid\n")
@@ -100,8 +98,8 @@ def display_field(field):
     placeholders are present to allow manipulation throughout
     the game.
     """
-    print("  A B C D E F G H I")
-    print("  ------------------")
+    print("  A B C D E F G")
+    print("  -------------")
     row_number = 1
     for row in field:
         print("%d|%s|" % (row_number, "|".join(row)))
@@ -118,7 +116,7 @@ def place_ship(field):
         while True:
             if field == AI_FIELD:
                 placement, row, column = random.choice(["H", "V"]), \
-                    random.randint(0, 8), random.randint(0, 8)
+                    random.randint(0, 6), random.randint(0, 6)
                 if check_placement(ship_length, row, column, placement):
                     if not check_overlap(field, row, column, placement,
                                          ship_length):
@@ -168,46 +166,46 @@ def player_input(place_ship):
                 print("Please enter a valid orientation (V or H)\n")
         while True:
             try:
-                row = input("Which row (1-9)?\n")
-                if row in "123456789":
+                row = input("Which row (1-7)?\n")
+                if row in "1234567":
                     row = int(row) - 1
                     break
                 else:
                     raise ValueError
             except ValueError:
-                print("Please enter a valid integer between 1-9\n")
+                print("Please enter a valid integer between 1-7\n")
         while True:
             try:
-                column = input("Which column (A-I)?\n").upper()
-                if column not in "ABCDEFGHI":
-                    print("Please enter a valid letter (A-I)\n")
+                column = input("Which column (A-G)?\n").upper()
+                if column not in "ABCDEFG":
+                    print("Please enter a valid letter (A-G)\n")
                 else:
                     column = letters_to_integers[column]
                     break
             except KeyError:
-                print("Please enter a valid letter (A-I)\n")
+                print("Please enter a valid letter (A-G)\n")
         return row, column, placement
     else:
         while True:
             try:
-                row = input("Which row (1-9)?\n")
-                if row in "123456789":
+                row = input("Which row (1-7)?\n")
+                if row in "1234567":
                     row = int(row) - 1
                     break
                 else:
                     raise ValueError
             except ValueError:
-                print("Please enter a valid integer between 1-9\n")
+                print("Please enter a valid integer between 1-7\n")
         while True:
             try:
-                column = input("Which column (A-I)?\n").upper()
-                if column not in "ABCDEFGHI":
-                    print("Please enter a valid letter (A-I)\n")
+                column = input("Which column (A-G)?\n").upper()
+                if column not in "ABCDEFG":
+                    print("Please enter a valid letter (A-G)\n")
                 else:
                     column = letters_to_integers[column]
                     break
             except KeyError:
-                print("Please enter a valid letter (A-I)\n")
+                print("Please enter a valid letter (A-G)\n")
         return row, column
 
 
@@ -234,12 +232,12 @@ def check_placement(SHIP_LENGTH, row, column, placement):
     in the place_ship function.
     """
     if placement == "H":
-        if column + SHIP_LENGTH > 9:
+        if column + SHIP_LENGTH > 7:
             return False
         else:
             return True
     else:
-        if row + SHIP_LENGTH > 9:
+        if row + SHIP_LENGTH > 7:
             return False
         else:
             return True
@@ -260,10 +258,10 @@ def player_computer_cycle(field):
             player_computer_cycle(field)
         elif AI_FIELD[row][column] == "$":
             field[row][column] = "X"
-            print_fast("Hit!")
+            print_fast("Hit!\n")
         else:
             field[row][column] = "-"
-            print_fast("Missed!")
+            print_fast("Missed!\n")
     else:
         row, column = random.randint(0, 8), random.randint(0, 8)
         if field[row][column] == "-":
@@ -272,10 +270,10 @@ def player_computer_cycle(field):
             player_computer_cycle(field)
         elif PLAYER_FIELD[row][column] == "$":
             field[row][column] = "X"
-            print_fast("We have been hit!")
+            print_fast("We have been hit!\n")
         else:
             field[row][column] = "-"
-            print_fast("They missed!")
+            print_fast("They missed!\n")
 
 
 def hit_counter(field):
