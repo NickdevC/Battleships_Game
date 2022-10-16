@@ -117,18 +117,12 @@ Based on the popular, classic boardgame, Battleships is a Python terminal game r
       - Used to produce the 'mockup' image of my game running on different devices (top of readme file).
 
 ## Testing
+   
+#### PEP8
 
-### Validator Testing
+- Due to the fact that the PEP8 website is currently down, I added the PEP8 validator to my Gitpod Workspace and ensured pycodestyle was enabled. This returned **no 'red' errors** and the only 'yellow' errors present were those referencing whitespace in and around my ASCII art at the start of my code.
    
-#### HTML
    
-- Result from [W3C Markup Validation Service](https://validator.w3.org/):
-
-   ![Navbar](documentation/validation-results/HTML-Validator.png)
-   
-   - Note: All html pages returned the same results as the above screenshot
-   
-
 ### Browser Compatibility
 
 - Testing has been successfully carried out on the following browsers:
