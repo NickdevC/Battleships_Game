@@ -1,31 +1,163 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+<h1 align="center"> :anchor: Battleships Game :anchor: </h1>
 
-Welcome NickdevC,
+[View the live project here](https://nickdevc-battleships.herokuapp.com/)
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
+Based on the popular, classic boardgame, Battleships is a Python terminal game running on Heroku. It provides 4x overlapping fields of play, allowing the user to place their ships and also target those of the computer. The user manually selects their ship placements, whilst the computer is randomly assigned coordinates. The game is won when all 5 of the opponent's ships have been destroyed!
 
-## Reminders
+![mockup](documentation/website-screenshots/Mockup.png)
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
+## Index - Table of Contents
+*  [Scope](#scope)
+*  [Features](#features)
+*  [Design](#design)
+*  [Technologies Used](#technologies-used)
+*  [Testing](#testing)
+*  [Deployment](#deployment)
+*  [Credits](#credits)
 
-## Creating the Heroku app
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+## Scope
 
-1. `heroku/python`
-2. `heroku/nodejs`
+-  ### Initial plan
+   
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+## Features
 
-Connect your GitHub repository and deploy as normal.
+   ### Existing/current Features
+      
+-   __Welcome Screen__
 
-## Constraints
+    - 
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+      ![Navbar](documentation/website-screenshots/Home-page.png)
 
------
-Happy coding!
+-   __Rules__
+
+    - A 
+
+      ![Navbar](documentation/website-screenshots/Rules-page.png)
+      
+-   __Player Placement__
+
+    - 
+
+      ![Navbar](documentation/website-screenshots/Game-page.png)
+      
+-   __Player/computer Guesses__
+
+    - 
+
+      ![Navbar](documentation/website-screenshots/End-page.png)
+
+-   __Visual feedback__
+
+    - 
+
+      ![Navbar](documentation/website-screenshots/Leaderboard.png)
+
+   ### Potential Future Features
+   
+- User name input
+   - This would add a personal touch to the game and allow for further feedback throughout the playtime ie. messages throughout the game could include direct reference to the user.
+- APIs
+   - Using Google Cloud APIs, I could store the user's name into a database.
+   - I could then ensure unique usernames are used and check against returning players, displaying previous scores before playing. This could potentially add an additional competitive element.
+- A visual leaderboard
+   - With the use of APIs, I could create a 'Top 5' leaderboard to be displayed at the start of the game. This could be measured with 'least amounts of guesses'.
+
+## Design
+
+   ### Colour
+- 
+
+   ![Navbar](documentation/website-screenshots/Coolors-quiz-scheme.png)
+   
+
+
+## Technologies Used
+
+### Languages Used
+
+-   [Python](https://en.wikipedia.org/wiki/python)
+
+### Frameworks, Libraries & Programs Used
+
+-   [Google Fonts](https://fonts.google.com/)
+      - Used to import 
+
+## Testing
+
+### Validator Testing
+   
+#### HTML
+   
+- Result from [W3C Markup Validation Service](https://validator.w3.org/):
+
+   ![Navbar](documentation/validation-results/HTML-Validator.png)
+   
+   - Note: All html pages returned the same results as the above screenshot
+   
+
+### Browser Compatibility
+
+- Testing has been successfully carried out on the following browsers:
+   
+   - Google Chrome - Version 100.0.4896.60 (Official Build) (64-bit)
+   - Microsoft Edge - Version 100.0.1185.50 (Official build) (64-bit)
+   - Mozilla FIrefox - Version 99.0.1 (64-bit)
+   - Safari - Version 13.1.3 (15609.4.1)
+
+### User Testing
+
+- A total of **8 different users** tested the website across a range of devices including: mobile, tablet and desktop viewports. At the time of testing, the main conclusions drawn were as follows:
+      
+     - All navigational links worked as expected :white_check_mark:
+     - Users were automatically pushed to the next question after answering :white_check_mark:
+     - Questions and answers were not always fully visible on smaller devices :red_circle: 
+          - This was later resolved using additional @media queries :white_check_mark:
+     - When selecting answers, users were given visible feedback from answer buttons :white_check_mark:
+     - The progress bar and score counter were not always visible to users on smaller devices :red_circle:
+         - This was later resolved using additional @media queries :white_check_mark:
+     - When users reached the end of the quiz, their total was not displayed and they were unable to select the 'save' button (it remained dsiabled) :red_circle:
+         - This was a significant bug and was resolved during the debugging stages (see below) :white_check_mark:
+     - Colours and font remained consistent across all user's devices. Everyone reported that the website was legible and easy to follow :white_check_mark:
+
+### Resolved Bugs
+
+- 
+
+### Unresolved Bugs
+
+- raising ValueError - struggled with syntax which lead to multiple errors...
+- player_input function - not correctly completing my 'try' statement with an 'except'...
+- ship placement issues - not correctly placing ships vertically...
+ 
+## Deployment
+
+   ### How to deploy
+
+- Go to the GitHub repository and navigate to the 'Settings' tab. Once there, select 'Pages' from the menu
+- Go to the 'Source' menu (drop-down box) and select 'Master Branch'
+- After the page has auto-refreshed, you should see a detailed ribbon display - this demonstrates a successful deployment
+- Now, any changes pushed from GitPod to the master branch will be visible and take effect on the live project [live project link](https://nickdevc.github.io/Film_Quiz)
+
+   ### How to clone
+
+- Go to the following repository on GitHub: https://github.com/NickdevC/Film_Quiz
+- At the top right of the screen, click the 'Code' button, and then click 'HTTPs'
+- Copy the link in this field
+- In GitPod, open a new GitBash terminal and go to the directory where you want to find the clone
+- On the command line type "git clone", then paste the copied url and press 'Enter'
+- The clone process should now begin
+
+## Credits
+
+
+  ### Code
+  
+-  '
+
+### Acknowledgements
+
+- 
