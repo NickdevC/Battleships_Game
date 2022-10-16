@@ -4,7 +4,7 @@
 
 Based on the popular, classic boardgame, Battleships is a Python terminal game running on Heroku. It provides 4x overlapping fields of play, allowing the user to place their ships and also target those of the computer. The user manually selects their ship placements, whilst the computer is randomly assigned coordinates. The game is won when all 5 of the opponent's ships have been destroyed!
 
-![mockup](documentation/website-screenshots/Mockup.png)
+![mockup](assets/images/am_i_responsive.png)
 
 ## Index - Table of Contents
 *  [Scope](#scope)
@@ -30,19 +30,19 @@ Based on the popular, classic boardgame, Battleships is a Python terminal game r
 
     - 
 
-      ![Navbar](documentation/website-screenshots/Home-page.png)
+      ![Navbar](assets/images/welcome_screen.png)
 
 -   __Rules__
 
     - A 
 
-      ![Navbar](documentation/website-screenshots/Rules-page.png)
+      ![Navbar](assets/images/rules_message.png)
       
 -   __Player Placement__
 
     - 
 
-      ![Navbar](documentation/website-screenshots/Game-page.png)
+      ![Navbar](assets/images/user_placement.png)
       
 -   __Player/computer Guesses__
 
@@ -75,17 +75,21 @@ Based on the popular, classic boardgame, Battleships is a Python terminal game r
    
 
 
-## Technologies Used
+## Technologies and Support
 
 ### Languages Used
 
 -   [Python](https://en.wikipedia.org/wiki/python)
 
-### Frameworks, Libraries & Programs Used
+### Frameworks, Libraries, Programs, and Websites
 
--   [Google Fonts](https://fonts.google.com/)
-      - Used to import 
-
+-   ['Time' module](https://docs.python.org/3/library/time.html)
+      - Used to support my understanding of the time module and ultimately lead to the inclusion of time delays on various 'print' messages throughout the game, leading to more comfortabel user experience.
+      
+-   ['Sys' module](https://docs.python.org/3/library/sys.html)
+      - Used to support my understanding of the sys module which resulted in the 'typewriter' style animation attached to various 'print' statements. This was an aesthetic addition that helped slow down the pace of the game and a better user experience.
+      
+-   ['Time' module](https://docs.python.org/3/library/time.html)
 ## Testing
 
 ### Validator Testing
