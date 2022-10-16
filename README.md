@@ -93,7 +93,7 @@ Based on the popular, classic boardgame, Battleships is a Python terminal game r
       - This module was needed to incorporate the 'randint' method of returning random integers for the computer's ship placement.
       
 -   [ASCII Art Library](https://pypi.org/project/art/)
-      - This website helped familiarise myself with ASCII art and lead to me finding the 'Battleships' welcome text and my own devleopment of the 'ship' image (also on the welcome screen)
+      - This website helped familiarise myself with ASCII art and lead to me finding the 'Battleships' welcome text and my own devleopment of the 'ship' image (also on the welcome screen).
 
 -   [Randint method(w3schools)](https://www.w3schools.com/python/ref_random_randint.asp)
       - Used this website to refresh my knowledge of randint, and helped me to apply this method to the computer's random choice function. 
@@ -111,8 +111,10 @@ Based on the popular, classic boardgame, Battleships is a Python terminal game r
       - Referenced this post to help me work through a challenging bug regarding some of my indentation which was breaking the entirity of my code.
 
 -   [Battleship function ideas(stack overflow](https://codereview.stackexchange.com/questions/tagged/battleship)
-      - Referenced posts within the stack overflow community to support the building of some of my functions. This also helped me visualise the 4x overlapping fields-of-play concept
+      - Referenced posts within the stack overflow community to support the building of some of my functions. This also helped me visualise the 4x overlapping fields-of-play concept.
 
+-   [Am I Responsive](https://ui.dev/amiresponsive)
+      - Used to produce the 'mockup' image of my game running on different devices (top of readme file).
 
 ## Testing
 
@@ -138,22 +140,22 @@ Based on the popular, classic boardgame, Battleships is a Python terminal game r
 
 ### User Testing
 
-- A total of **8 different users** tested the website across a range of devices including: mobile, tablet and desktop viewports. At the time of testing, the main conclusions drawn were as follows:
+- A total of **6 different users** tested the website on desktop devices. At the time of testing, the main conclusions drawn were as follows:
       
-     - All navigational links worked as expected :white_check_mark:
-     - Users were automatically pushed to the next question after answering :white_check_mark:
-     - Questions and answers were not always fully visible on smaller devices :red_circle: 
-          - This was later resolved using additional @media queries :white_check_mark:
-     - When selecting answers, users were given visible feedback from answer buttons :white_check_mark:
-     - The progress bar and score counter were not always visible to users on smaller devices :red_circle:
-         - This was later resolved using additional @media queries :white_check_mark:
-     - When users reached the end of the quiz, their total was not displayed and they were unable to select the 'save' button (it remained dsiabled) :red_circle:
-         - This was a significant bug and was resolved during the debugging stages (see below) :white_check_mark:
-     - Colours and font remained consistent across all user's devices. Everyone reported that the website was legible and easy to follow :white_check_mark:
+     - The game opened successfully and everyone was greeted with the welcome message :white_check_mark:
+     - All users successfully saw the 'sys' and 'time' modules working as text was delayed and followed a typerwriter effect :white_check_mark:
+     - All users could see the colour variations of text :white_check_mark:
+     - All users saw the field of play displayed and were correctly guided through prompts to place their ships :white_check_mark:
+     - On placing their ships, users were unable to place ships vertically :red_circle: 
+          - This is still unresolved and, although I have sought and found workable solutions through the Slack community (including a different method of displaying the grid using complex mathematics, I am unable to implement these in my current timeframe.
+     - During the game, all users reported the successful, random, deployment of the computer's ships :white_check_mark:
+     - All users were able to see the correct markers for 'hits' and 'misses', and were able to read visual prompts regarding this :white_check_mark:
+     - When the total number of hits was reached, all users experienced the 'end message' either congratulating or commiserating :white_check_mark:
 
 ### Resolved Bugs
 
-- 
+- Raising ValueError
+      - I struggled with the syntax surrounding the multiple applications of the ValueError. Ultimately, I used advice on the internet and realised that one of my lines of code required the KeyError exception instead.
 
 ### Unresolved Bugs
 
