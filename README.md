@@ -88,8 +88,32 @@ Based on the popular, classic boardgame, Battleships is a Python terminal game r
       
 -   ['Sys' module](https://docs.python.org/3/library/sys.html)
       - Used to support my understanding of the sys module which resulted in the 'typewriter' style animation attached to various 'print' statements. This was an aesthetic addition that helped slow down the pace of the game and a better user experience.
+
+-   ['Random' module](https://docs.python.org/3/library/random.html)
+      - This module was needed to incorporate the 'randint' method of returning random integers for the computer's ship placement.
       
--   ['Time' module](https://docs.python.org/3/library/time.html)
+-   [ASCII Art Library](https://pypi.org/project/art/)
+      - This website helped familiarise myself with ASCII art and lead to me finding the 'Battleships' welcome text and my own devleopment of the 'ship' image (also on the welcome screen)
+
+-   [Randint method(w3schools)](https://www.w3schools.com/python/ref_random_randint.asp)
+      - Used this website to refresh my knowledge of randint, and helped me to apply this method to the computer's random choice function. 
+
+-   [Slow typing effect in Python(stack overflow)](https://stackoverflow.com/questions/4099422/printing-slowly-simulate-typing)
+      - Referenced this post to learn about how to implement the slow typing effect on Python print statements. This lead me to using the 'sys' module.
+
+-   [Coloured text in Python(stackabuse)](https://stackabuse.com/how-to-print-colored-text-in-python/)
+      - Referenced this guide for applying colours to various different ships (on the welcome screen) and applying a base colour of blue to the majority of text in the terminal.
+
+-   [Placeholders within strings(stack overflow)](https://stackoverflow.com/questions/4288973/whats-the-difference-between-s-and-d-in-python-string-formatting)
+      - Used this to help me overcome some difficulties I was facing with certain strings in my code.
+
+-   [Unexpected unident error(stack overflow)](https://stackoverflow.com/questions/10239668/indentationerror-unexpected-unindent-why)
+      - Referenced this post to help me work through a challenging bug regarding some of my indentation which was breaking the entirity of my code.
+
+-   [Battleship function ideas(stack overflow](https://codereview.stackexchange.com/questions/tagged/battleship)
+      - Referenced posts within the stack overflow community to support the building of some of my functions. This also helped me visualise the 4x overlapping fields-of-play concept
+
+
 ## Testing
 
 ### Validator Testing
