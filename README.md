@@ -147,14 +147,14 @@ Based on the popular, classic boardgame, Battleships is a Python terminal game r
      - All users could see the colour variations of text :white_check_mark:
      - All users saw the field of play displayed and were correctly guided through prompts to place their ships :white_check_mark:
      - On placing their ships, users were unable to place ships vertically :red_circle: 
-          - This is still unresolved and, although I have sought and found workable solutions through the Slack community (including a different method of displaying the grid using complex mathematics, I am unable to implement these in my current timeframe.
+          - This is still unresolved and, although I have sought and found workable solutions through the Slack community (including a different method of displaying the grid using complex mathematics) I am unable to implement these in my current timeframe.
      - During the game, all users reported the successful, random, deployment of the computer's ships :white_check_mark:
      - All users were able to see the correct markers for 'hits' and 'misses', and were able to read visual prompts regarding this :white_check_mark:
      - When the total number of hits was reached, all users experienced the 'end message' either congratulating or commiserating :white_check_mark:
 
 ### Resolved Bugs
 
-- Raising ValueError
+- **Raising ValueError**
       - I struggled with the syntax surrounding the multiple applications of the ValueError. Ultimately, I used advice on the internet and realised that one of my lines of code required the KeyError exception instead.
 
 ### Unresolved Bugs
