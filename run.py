@@ -115,8 +115,7 @@ def place_ship(field):
     for ship_length in SHIP_LENGTHS:
         while True:
             if field == AI_FIELD:
-                placement, row, column = random.choice(["H", "V"]), \
-                    random.randint(0, 6), random.randint(0, 6)
+                placement, row, column = random.choice(["H", "V"]), random.randint(0, 6), random.randint(0, 6)
                 if check_placement(ship_length, row, column, placement):
                     if not check_overlap(field, row, column, placement,
                                          ship_length):
@@ -138,11 +137,11 @@ def place_ship(field):
                         print("Cannot place ship. Pick again!\n")
                     else:
                         if placement == "H":
-                            for i in range(row, row + ship_length):
-                                field[column][i] = "$"
-                        else:
                             for i in range(column, column + ship_length):
                                 field[row][i] = "$"
+                        else:
+                            for i in range(row, row + ship_length):
+                                field[column][i] = "$"
                         display_field(PLAYER_FIELD)
                         break
 
@@ -153,7 +152,7 @@ def player_input(place_ship):
     ships and also signal where they wish to target their
     opponents' ships.
     """
-    if place_ship == True:
+    if place_ship:
         while True:
             try:
                 placement = input("\nVertical(V) or horizontal(H) placement?")\
