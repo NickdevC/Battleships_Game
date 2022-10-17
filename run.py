@@ -291,6 +291,9 @@ def hit_counter(field):
     return count
 
 
+# start_game function was inspired by a screenshot
+# from Slack user Faris. It was the basis for my experimenting
+# during my leave of absence.
 def start_game():
     """
     Executes the game functions.
