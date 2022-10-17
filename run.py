@@ -88,7 +88,7 @@ battlefield - think tactically!\n")
     print_slow("\nIt is then up to you to route out the enemy's ships \
 and destroy them!\n")
     print_slow("\nThe first player to successfuly sink all of their \
-opponent's ships wins!\n")
+opponent's ships wins!\033[0;0m\n")
     time.sleep(2)
 
 
@@ -153,7 +153,7 @@ def player_input(place_ship):
     ships and also signal where they wish to target their
     opponents' ships.
     """
-    if place_ship:
+    if place_ship == True:
         while True:
             try:
                 placement = input("\nVertical(V) or horizontal(H) placement?")\
@@ -257,23 +257,23 @@ def player_computer_cycle(field):
         elif field[row][column] == "X":
             player_computer_cycle(field)
         elif AI_FIELD[row][column] == "$":
-            field[row][column] = "X"
-            print_fast("\u001b[32mHit!\n")
+            field[row][column] = "\u001b[32mX\033[0;0m"
+            print_fast("\u001b[32mHit!\033[0;0m\n")
         else:
             field[row][column] = "-"
-            print_fast("\u001b[31mMissed!\n")
+            print_fast("\u001b[31mMissed!\033[0;0m\n")
     else:
-        row, column = random.randint(0, 8), random.randint(0, 8)
+        row, column = random.randint(0, 6), random.randint(0, 6)
         if field[row][column] == "-":
             player_computer_cycle(field)
         elif field[row][column] == "X":
             player_computer_cycle(field)
         elif PLAYER_FIELD[row][column] == "$":
-            field[row][column] = "X"
-            print_fast("\u001b[31mWe have been hit!\n")
+            field[row][column] = "\u001b[31mX\033[0;0m"
+            print_fast("\u001b[31mWe have been hit!\033[0;0m\n")
         else:
             field[row][column] = "-"
-            print_fast("\u001b[32mThey missed!\n")
+            print_fast("\u001b[32mThey missed!\033[0;0m\n")
 
 
 def hit_counter(field):
@@ -314,7 +314,7 @@ def start_game():
             break
         display_field(AI_GUESS)
         if hit_counter(AI_GUESS) == 17:
-            print_slow("You have been bested on the high seas!")
+            print_slow("You have been bested on the high seas! Bad luck.")
             break
 
 
