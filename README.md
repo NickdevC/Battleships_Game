@@ -198,8 +198,8 @@ This game was deployed through Heroku. The live link is [here](https://nickdevc-
 I completed this project in a very small window (13 days) after having two months off from the course due to a leave of absence. Coming back to essentially re-learn Python, and reconnect with the project whilst working full time was incredibly difficult. My first plans for a battleship game were scrapped early on as I found I was not progressing, and it was only through inspiration and guidance from other CI students that I was able to get this project off the ground. **I am incredibly grateful for the Slack community for their selfless support over the last fortnight.**
 
 - Credit to various inspiration from code found in various posts on [this Code Review thread](https://codereview.stackexchange.com/questions/tagged/battleship)
-- Thank you to 'Faris' (Slack community) for inspiration with regards to the 4x overlapping grid methodology and the start_game() logic.
 - A huge thank you to Warwick (Slack community) for offering guidance and support during some difficult testing phases.
+- Thank you to 'Faris' (Slack community) for inspiration with regards to the 4x overlapping grid methodology and the start_game() logic - it was from your function that I worked backwards in creating my structure.
 - Thank you to my mentor Martina, for offering me timely guidance right up until my deadline.
 
 
