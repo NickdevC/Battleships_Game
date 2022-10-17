@@ -115,8 +115,7 @@ def place_ship(field):
     for ship_length in SHIP_LENGTHS:
         while True:
             if field == AI_FIELD:
-                placement, row, column = random.choice(["H", "V"]), \
-                    random.randint(0, 6), random.randint(0, 6)
+                placement, row, column = random.choice(["H", "V"]), random.randint(0, 6), random.randint(0, 6)
                 if check_placement(ship_length, row, column, placement):
                     if not check_overlap(field, row, column, placement,
                                          ship_length):
@@ -125,7 +124,7 @@ def place_ship(field):
                                 field[row][i] = "$"
                         else:
                             for i in range(row, row + ship_length):
-                                field[column][i] = "$"
+                                field[i][column] = "$"
                         break
             else:
                 place_ship = True
@@ -142,7 +141,7 @@ def place_ship(field):
                                 field[row][i] = "$"
                         else:
                             for i in range(row, row + ship_length):
-                                field[column][i] = "$"
+                                field[i][column] = "$"
                         display_field(PLAYER_FIELD)
                         break
 
