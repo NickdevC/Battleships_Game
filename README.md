@@ -117,10 +117,13 @@ Initially, I did want to create a static board, with messages printed to the use
       - Referenced this guide for applying colours to various different ships (on the welcome screen) and applying a base colour of blue to the majority of text in the terminal.
 
 -   [Placeholders within strings(stack overflow)](https://stackoverflow.com/questions/4288973/whats-the-difference-between-s-and-d-in-python-string-formatting)
-      - Used this to help me overcome some difficulties I was facing with certain strings in my code.
+      - Used this to help me overcome some difficulties in accessing values from elsewhere in my code efficiently.
 
 -   [Unexpected unident error(stack overflow)](https://stackoverflow.com/questions/10239668/indentationerror-unexpected-unindent-why)
       - Referenced this post to help me work through a challenging bug regarding some of my indentation which was breaking the entirity of my code.
+
+-   [Try except statement(Python Basics](https://pythonbasics.org/try-except/)
+      - Helped me realise that I had forgotten to close off my try statements with the except function.
 
 -   [Battleship function ideas(stack overflow](https://codereview.stackexchange.com/questions/tagged/battleship)
       - Referenced posts within the stack overflow community to support the building of some of my functions. This also helped me visualise the 4x overlapping fields-of-play concept.
@@ -153,7 +156,8 @@ Initially, I did want to create a static board, with messages printed to the use
      - All users could see the colour variations of text :white_check_mark:
      - All users saw the field of play displayed and were correctly guided through prompts to place their ships :white_check_mark:
      - On placing their ships, users were unable to place ships vertically :red_circle: 
-          - This is still unresolved and, although I have sought and found workable solutions through the Slack community (including a different method of displaying the grid using complex mathematics) I am unable to implement these in my current timeframe.
+          - This is still unresolved (15th October) and, although I have sought and found workable solutions through the Slack community (including a different method of displaying the grid using complex mathematics) I am unable to implement these in my current timeframe.
+          - Update (17th October): this has now been resolved through changing the order of syntax within the place_ship function (the 'column' was being passed **before** the integer).
      - During the game, all users reported the successful, random, deployment of the computer's ships :white_check_mark:
      - All users were able to see the correct markers for 'hits' and 'misses', and were able to read visual prompts regarding this :white_check_mark:
      - When the total number of hits was reached, all users experienced the 'end message' either congratulating or commiserating :white_check_mark:
@@ -162,12 +166,15 @@ Initially, I did want to create a static board, with messages printed to the use
 
 - **Raising ValueError**
       - I struggled with the syntax surrounding the multiple applications of the ValueError. Ultimately, I used advice on the internet and realised that one of my lines of code required the KeyError exception instead.
+- **Try except statement**
+      - I had an ongoing issue with my player_input_function where it was not executing the final stages of my block of code. After reviewing [this guide](https://pythonbasics.org/try-except/) I was able to see that I had simply forgotten to close off my try statement with an except function.
+- **Vertical placement**
+      - For a number of days, I was experiencing an issue where the user could not place ships vertically. After a number of tests, and accepting that the bug could not be resolved in time, I tried switching the order of my syntax (putting the integer passed 'i' before the 'column' as this would force the placement to work top-bottom).
 
 ### Unresolved Bugs
 
-- raising ValueError - struggled with syntax which lead to multiple errors...
-- player_input function - not correctly completing my 'try' statement with an 'except'...
-- ship placement issues - not correctly placing ships vertically...
+- **Ghost computer placement**
+      - During my own testing, on one occasion, the computer's random placement seemed to not be within the scope of the grid. I had successfully targeted every grid reference, and there was still **one** hit left to find. I have been unable to recreate the bug and now do not have time to investigate further.
  
 ## Deployment
 
