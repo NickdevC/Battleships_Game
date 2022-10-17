@@ -29,19 +29,28 @@ Initially, I did want to create a static board, with messages printed to the use
       
 -   __Welcome Screen__
 
-    - 
+    - Utilising the 'sys' module, I was able to recreate a typewriter effect as the welcome text is displayed.
+    - ASCII art images were created to  visually represent a ship in the water, and the main title of the game was made bold and eye-catching for the user.
+    - I ensured that the speed at which text was displayed meant that users could digest the information at a comfortable speed whilst still being engaged.
 
       ![Navbar](assets/images/welcome_screen.png)
 
 -   __Rules__
 
-    - A 
+    - The rules of the game are clearly displayed, following a step-by-step guide to play.
+    - The different ships and their sizes are explained, whilst also utilising different colour text to make them stand out and differentiate from each other.
+    - Users are asked to type 'P' to start the game. On an incorrect key press, the message is repeated for the user.
 
       ![Navbar](assets/images/rules_message.png)
       
 -   __Player Placement__
 
-    - 
+    - On starting the game, the user is presented with the 'battlefield' grid - indicating the x and y axis using integers and letters.
+    - The user is asked to specify whether they wish to place their ship vertically or horizontally (H or V).
+    - They are then asked to select a row number (1-7).
+    - Finally, users are asked to select a column (A-G). **Note: the given coordinates correlate to the 'start' of the ship and therfore placement will either go from left to right, or top to bottom**
+    - If the placement does not cross the scope of the grid, or overlap other ships, then the placement is accepted and '$' symbols are displayed to show where the ship has been placed.
+    - Throughout all of these questions and checks, error messages are displayed to prompt the user to re-type in data if there are any conflicts.
 
       ![Navbar](assets/images/user_placement.png)
       
