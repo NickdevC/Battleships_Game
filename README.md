@@ -18,9 +18,10 @@ Based on the popular, classic boardgame, Battleships is a Python terminal game r
 
 ## Scope
 
--  ### Initial plan
-   
+I wanted to create a functional, simple battleships game, that provided a visual battlefield display so that users could see the 'action' in real time. Through researching on the [Stack Overflow](https://stackoverflow.com/search?q=battleships+python) community, and in speaking to some fellow Code Institute students on Slack, I reached the decision to focus on a model where I would create 4x overlapping fields (or grids). One each to the computer and user to 'place' their ships, and then one each to show both the computer's and user's guesses. My theory was that this method could make the checks for overlapping placements easier. 
 
+Initially, I did want to create a static board, with messages printed to the user dynamically underneath during the game. Due to my time-constraints, this became outside of my scope and I instead needed to re-print the battlefield after every turn.
+   
 
 ## Features
 
@@ -60,6 +61,8 @@ Based on the popular, classic boardgame, Battleships is a Python terminal game r
    
 - User name input
    - This would add a personal touch to the game and allow for further feedback throughout the playtime ie. messages throughout the game could include direct reference to the user.
+- A static battlefield
+   - This would mean that the need to continuously print new grids would become a redundant feature. It would also make for a cleaner aesthetic, requiring the user to only focus on the one visible screen in the terminal (rather than having to scroll to see the computer's turn played out).
 - APIs
    - Using Google Cloud APIs, I could store the user's name into a database.
    - I could then ensure unique usernames are used and check against returning players, displaying previous scores before playing. This could potentially add an additional competitive element.
