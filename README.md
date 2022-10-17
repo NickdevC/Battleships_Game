@@ -52,19 +52,21 @@ Initially, I did want to create a static board, with messages printed to the use
     - If the placement does not cross the scope of the grid, or overlap other ships, then the placement is accepted and '$' symbols are displayed to show where the ship has been placed.
     - Throughout all of these questions and checks, error messages are displayed to prompt the user to re-type in data if there are any conflicts.
 
-      ![Navbar](assets/images/user_placement.png)
+      ![Navbar](assets/images/placement_message.png)
+      ![Navbar](assets/images/placement.png)
       
 -   __Player/computer Guesses__
 
-    - 
+    - The user is then prompted to guess a row, followed by a column.
+    - If successful, the user will be greeted by a green message acknowledging the hit, and a green 'X' will be visible on the field.
+    - If unsuccessful, the user will be greeted by a red message explaining the miss, and a '-' placeholder will be visible on the field.
+    - The same process occurs for the computer, however their 'X' markers are red to differentiate from the player's field.
 
-      ![Navbar](documentation/website-screenshots/End-page.png)
+      ![Navbar](assets/images/player_computer_guess.png)
 
--   __Visual feedback__
+-   __End__
 
-    - 
-
-      ![Navbar](documentation/website-screenshots/Leaderboard.png)
+   - Once either the player, or the computer reaches 17 hits, the game prints a message either acknowledging the player's win, or commiserating their loss.
 
    ### Potential Future Features
    
