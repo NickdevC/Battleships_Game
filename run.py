@@ -123,7 +123,7 @@ def place_ship(field):
                         if placement == "H":
                             for i in range(column, column + ship_length):
                                 field[row][i] = "$"
-                        else:
+                        elif placement == "V":
                             for i in range(row, row + ship_length):
                                 field[i][column] = "$"
                         break
@@ -140,9 +140,11 @@ def place_ship(field):
                         if placement == "H":
                             for i in range(column, column + ship_length):
                                 field[row][i] = "$"
-                        else:
+                        elif placement == "V":
                             for i in range(row, row + ship_length):
                                 field[i][column] = "$"
+                        else:
+                            break
                         display_field(PLAYER_FIELD)
                         break
 
