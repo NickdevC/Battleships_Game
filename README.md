@@ -52,19 +52,21 @@ Initially, I did want to create a static board, with messages printed to the use
     - If the placement does not cross the scope of the grid, or overlap other ships, then the placement is accepted and '$' symbols are displayed to show where the ship has been placed.
     - Throughout all of these questions and checks, error messages are displayed to prompt the user to re-type in data if there are any conflicts.
 
-      ![Navbar](assets/images/user_placement.png)
+      ![Navbar](assets/images/placement_message.png)
+      ![Navbar](assets/images/placement.png)
       
 -   __Player/computer Guesses__
 
-    - 
+    - The user is then prompted to guess a row, followed by a column.
+    - If successful, the user will be greeted by a green message acknowledging the hit, and a green 'X' will be visible on the field.
+    - If unsuccessful, the user will be greeted by a red message explaining the miss, and a '-' placeholder will be visible on the field.
+    - The same process occurs for the computer, however their 'X' markers are red to differentiate from the player's field.
 
-      ![Navbar](documentation/website-screenshots/End-page.png)
+      ![Navbar](assets/images/player_computer_guess.png)
 
--   __Visual feedback__
+-   __End__
 
-    - 
-
-      ![Navbar](documentation/website-screenshots/Leaderboard.png)
+   - Once either the player, or the computer reaches 17 hits, the game prints a message either acknowledging the player's win, or commiserating their loss.
 
    ### Potential Future Features
    
@@ -84,11 +86,11 @@ Initially, I did want to create a static board, with messages printed to the use
 ## Design
 
    ### Colour
-- 
-
-   ![Navbar](documentation/website-screenshots/Coolors-quiz-scheme.png)
+   The majoprity of the welcome messages and rules are presented in blue (in a bid to keep things nautical). In addition, I chose to seperate the various ships using bold colours to make this easier for the user to spot differences. All other applications of colour were purely to differentiate the player from the computer (mainly green and red)
    
-
+   ### Grids
+   Whilst the initial part of the game is based on overlapping grids (player's placement, player's guess, computer's placement, computer's guess), during the game itself, the console produces a cascade effect - printing a new grid after every user input. Whilst his is dynamic and adds a sense of movement to the console, I feel it would be better in future to stick to a static grid for the player and one for the computer (see Potential User Features). 
+   
 
 ## Technologies and Support
 
@@ -184,14 +186,20 @@ Initially, I did want to create a static board, with messages printed to the use
 
 This game was deployed through Heroku. The live link is [here](https://nickdevc-battleships.herokuapp.com/)
 
+- Fork/clone this repository
+- Create a new app on Heroku
+- Ensure that the buildpacks are set to 'Python' and 'NodeJS' (the Code Institute template provides code for the terminal to display the game)
+- Link the app on Heroku to the repository
+- Click on the 'Deploy' button
 
-### Credits and Acknowledgements
+
+## Credits and Acknowledgements
 
 I completed this project in a very small window (13 days) after having two months off from the course due to a leave of absence. Coming back to essentially re-learn Python, and reconnect with the project whilst working full time was incredibly difficult. My first plans for a battleship game were scrapped early on as I found I was not progressing, and it was only through inspiration and guidance from other CI students that I was able to get this project off the ground. **I am incredibly grateful for the Slack community for their selfless support over the last fortnight.**
 
 - Credit to various inspiration from code found in various posts on [this Code Review thread](https://codereview.stackexchange.com/questions/tagged/battleship)
-- Thank you to 'Faris' (Slack community) for inspiration with regards to the 4x overlapping grid methodology and the start_game() logic.
 - A huge thank you to Warwick (Slack community) for offering guidance and support during some difficult testing phases.
+- Thank you to 'Faris' (Slack community) for inspiration with regards to the 4x overlapping grid methodology and the start_game() logic - it was from your function that I worked backwards in creating my structure.
 - Thank you to my mentor Martina, for offering me timely guidance right up until my deadline.
 
 
