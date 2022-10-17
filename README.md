@@ -18,9 +18,10 @@ Based on the popular, classic boardgame, Battleships is a Python terminal game r
 
 ## Scope
 
--  ### Initial plan
-   
+I wanted to create a functional, simple battleships game, that provided a visual battlefield display so that users could see the 'action' in real time. Through researching on the [Stack Overflow](https://stackoverflow.com/search?q=battleships+python) community, and in speaking to some fellow Code Institute students on Slack, I reached the decision to focus on a model where I would create 4x overlapping fields (or grids). One each to the computer and user to 'place' their ships, and then one each to show both the computer's and user's guesses. My theory was that this method could make the checks for overlapping placements easier. 
 
+Initially, I did want to create a static board, with messages printed to the user dynamically underneath during the game. Due to my time-constraints, this became outside of my scope and I instead needed to re-print the battlefield after every turn.
+   
 
 ## Features
 
@@ -28,19 +29,28 @@ Based on the popular, classic boardgame, Battleships is a Python terminal game r
       
 -   __Welcome Screen__
 
-    - 
+    - Utilising the 'sys' module, I was able to recreate a typewriter effect as the welcome text is displayed.
+    - ASCII art images were created to  visually represent a ship in the water, and the main title of the game was made bold and eye-catching for the user.
+    - I ensured that the speed at which text was displayed meant that users could digest the information at a comfortable speed whilst still being engaged.
 
       ![Navbar](assets/images/welcome_screen.png)
 
 -   __Rules__
 
-    - A 
+    - The rules of the game are clearly displayed, following a step-by-step guide to play.
+    - The different ships and their sizes are explained, whilst also utilising different colour text to make them stand out and differentiate from each other.
+    - Users are asked to type 'P' to start the game. On an incorrect key press, the message is repeated for the user.
 
       ![Navbar](assets/images/rules_message.png)
       
 -   __Player Placement__
 
-    - 
+    - On starting the game, the user is presented with the 'battlefield' grid - indicating the x and y axis using integers and letters.
+    - The user is asked to specify whether they wish to place their ship vertically or horizontally (H or V).
+    - They are then asked to select a row number (1-7).
+    - Finally, users are asked to select a column (A-G). **Note: the given coordinates correlate to the 'start' of the ship and therfore placement will either go from left to right, or top to bottom**
+    - If the placement does not cross the scope of the grid, or overlap other ships, then the placement is accepted and '$' symbols are displayed to show where the ship has been placed.
+    - Throughout all of these questions and checks, error messages are displayed to prompt the user to re-type in data if there are any conflicts.
 
       ![Navbar](assets/images/user_placement.png)
       
@@ -60,6 +70,8 @@ Based on the popular, classic boardgame, Battleships is a Python terminal game r
    
 - User name input
    - This would add a personal touch to the game and allow for further feedback throughout the playtime ie. messages throughout the game could include direct reference to the user.
+- A static battlefield
+   - This would mean that the need to continuously print new grids would become a redundant feature. It would also make for a cleaner aesthetic, requiring the user to only focus on the one visible screen in the terminal (rather than having to scroll to see the computer's turn played out).
 - APIs
    - Using Google Cloud APIs, I could store the user's name into a database.
    - I could then ensure unique usernames are used and check against returning players, displaying previous scores before playing. This could potentially add an additional competitive element.
@@ -117,18 +129,12 @@ Based on the popular, classic boardgame, Battleships is a Python terminal game r
       - Used to produce the 'mockup' image of my game running on different devices (top of readme file).
 
 ## Testing
+   
+#### PEP8
 
-### Validator Testing
+- Due to the fact that the PEP8 website is currently down, I added the PEP8 validator to my Gitpod Workspace and ensured pycodestyle was enabled. This returned **no 'red' errors** and the only 'yellow' errors present were those referencing whitespace in and around my ASCII art at the start of my code.
    
-#### HTML
    
-- Result from [W3C Markup Validation Service](https://validator.w3.org/):
-
-   ![Navbar](documentation/validation-results/HTML-Validator.png)
-   
-   - Note: All html pages returned the same results as the above screenshot
-   
-
 ### Browser Compatibility
 
 - Testing has been successfully carried out on the following browsers:
