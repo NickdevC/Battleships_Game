@@ -10,10 +10,10 @@ Based on the popular, classic boardgame, Battleships is a Python terminal game r
 *  [Scope](#scope)
 *  [Features](#features)
 *  [Design](#design)
-*  [Technologies Used](#technologies-used)
+*  [Technologies and Support](#technologies-and-support)
 *  [Testing](#testing)
 *  [Deployment](#deployment)
-*  [Credits](#credits)
+*  [Credits and Acknowledgements](#credits-and-acknowledgements)
 
 
 ## Scope
@@ -77,6 +77,9 @@ Initially, I did want to create a static board, with messages printed to the use
    - I could then ensure unique usernames are used and check against returning players, displaying previous scores before playing. This could potentially add an additional competitive element.
 - A visual leaderboard
    - With the use of APIs, I could create a 'Top 5' leaderboard to be displayed at the start of the game. This could be measured with 'least amounts of guesses'.
+- A 'play again' button
+   - With additional time, I would habe liked to have included a button to return the user to the start_game function (bypassing the welcome screen)
+
 
 ## Design
 
@@ -131,13 +134,13 @@ Initially, I did want to create a static board, with messages printed to the use
 -   [Am I Responsive](https://ui.dev/amiresponsive)
       - Used to produce the 'mockup' image of my game running on different devices (top of readme file).
 
+
 ## Testing
    
 #### PEP8
 
 - Due to the fact that the PEP8 website is currently down, I added the PEP8 validator to my Gitpod Workspace and ensured pycodestyle was enabled. This returned **no 'red' errors** and the only 'yellow' errors present were those referencing whitespace in and around my ASCII art at the start of my code.
-   
-   
+     
 ### Browser Compatibility
 
 - Testing has been successfully carried out on the following browsers:
@@ -176,31 +179,19 @@ Initially, I did want to create a static board, with messages printed to the use
 - **Ghost computer placement**
       - During my own testing, on one occasion, the computer's random placement seemed to not be within the scope of the grid. I had successfully targeted every grid reference, and there was still **one** hit left to find. I have been unable to recreate the bug and now do not have time to investigate further.
  
+ 
 ## Deployment
 
-   ### How to deploy
-
-- Go to the GitHub repository and navigate to the 'Settings' tab. Once there, select 'Pages' from the menu
-- Go to the 'Source' menu (drop-down box) and select 'Master Branch'
-- After the page has auto-refreshed, you should see a detailed ribbon display - this demonstrates a successful deployment
-- Now, any changes pushed from GitPod to the master branch will be visible and take effect on the live project [live project link](https://nickdevc.github.io/Film_Quiz)
-
-   ### How to clone
-
-- Go to the following repository on GitHub: https://github.com/NickdevC/Film_Quiz
-- At the top right of the screen, click the 'Code' button, and then click 'HTTPs'
-- Copy the link in this field
-- In GitPod, open a new GitBash terminal and go to the directory where you want to find the clone
-- On the command line type "git clone", then paste the copied url and press 'Enter'
-- The clone process should now begin
-
-## Credits
+This game was deployed through Heroku. The live link is [here](https://nickdevc-battleships.herokuapp.com/)
 
 
-  ### Code
-  
--  '
+### Credits and Acknowledgements
 
-### Acknowledgements
+I completed this project in a very small window (13 days) after having two months off from the course due to a leave of absence. Coming back to essentially re-learn Python, and reconnect with the project whilst working full time was incredibly difficult. My first plans for a battleship game were scrapped early on as I found I was not progressing, and it was only through inspiration and guidance from other CI students that I was able to get this project off the ground. **I am incredibly grateful for the Slack community for their selfless support over the last fortnight.**
 
-- 
+- Credit to various inspiration from code found in various posts on [this Code Review thread](https://codereview.stackexchange.com/questions/tagged/battleship)
+- Thank you to 'Faris' (Slack community) for inspiration with regards to the 4x overlapping grid methodology and the start_game() logic.
+- A huge thank you to Warwick (Slack community) for offering guidance and support during some difficult testing phases.
+- Thank you to my mentor Martina, for offering me timely guidance right up until my deadline.
+
+
