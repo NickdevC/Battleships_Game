@@ -89,7 +89,7 @@ Initially, I did want to create a static board, with messages printed to the use
    The majoprity of the welcome messages and rules are presented in blue (in a bid to keep things nautical). In addition, I chose to seperate the various ships using bold colours to make this easier for the user to spot differences. All other applications of colour were purely to differentiate the player from the computer (mainly green and red)
    
    ### Grids
-   Whilst the initial part of the game is based on overlapping grids (player's placement, player's guess, computer's placement, computer's guess), during the game itself, the console produces a cascade effect - printing a new grid after every user input. Whilst his is dynamic and adds a sense of movement to the console, I feel it would be better in future to stick to a static grid for the player and one for the computer (see [Potential User Features](#potential_user_features)). 
+   Whilst the initial part of the game is based on overlapping grids (player's placement, player's guess, computer's placement, computer's guess), during the game itself, the console produces a cascade effect - printing a new grid after every user input. Whilst his is dynamic and adds a sense of movement to the console, I feel it would be better in future to stick to a static grid for the player and one for the computer (see Potential User Features). 
    
 
 ## Technologies and Support
