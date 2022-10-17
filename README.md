@@ -186,6 +186,12 @@ Initially, I did want to create a static board, with messages printed to the use
 
 This game was deployed through Heroku. The live link is [here](https://nickdevc-battleships.herokuapp.com/)
 
+- Fork/clone this repository
+- Create a new app on Heroku
+- Ensure that the buildpacks are set to 'Python' and 'NodeJS' (the Code Institute template provides code for the terminal to display the game)
+- Link the app on Heroku to the repository
+- Click on the 'Deploy' button
+
 
 ## Credits and Acknowledgements
 
