@@ -10,10 +10,10 @@ Based on the popular, classic boardgame, Battleships is a Python terminal game r
 *  [Scope](#scope)
 *  [Features](#features)
 *  [Design](#design)
-*  [Technologies Used](#technologies-used)
+*  [Technologies and Support](#technologies-and-support)
 *  [Testing](#testing)
 *  [Deployment](#deployment)
-*  [Credits](#credits)
+*  [Credits and Acknowledgements](#credits-and-acknowledgements)
 
 
 ## Scope
@@ -77,6 +77,9 @@ Initially, I did want to create a static board, with messages printed to the use
    - I could then ensure unique usernames are used and check against returning players, displaying previous scores before playing. This could potentially add an additional competitive element.
 - A visual leaderboard
    - With the use of APIs, I could create a 'Top 5' leaderboard to be displayed at the start of the game. This could be measured with 'least amounts of guesses'.
+- A 'play again' button
+   - With additional time, I would habe liked to have included a button to return the user to the start_game function (bypassing the welcome screen)
+
 
 ## Design
 
@@ -117,10 +120,13 @@ Initially, I did want to create a static board, with messages printed to the use
       - Referenced this guide for applying colours to various different ships (on the welcome screen) and applying a base colour of blue to the majority of text in the terminal.
 
 -   [Placeholders within strings(stack overflow)](https://stackoverflow.com/questions/4288973/whats-the-difference-between-s-and-d-in-python-string-formatting)
-      - Used this to help me overcome some difficulties I was facing with certain strings in my code.
+      - Used this to help me overcome some difficulties in accessing values from elsewhere in my code efficiently.
 
 -   [Unexpected unident error(stack overflow)](https://stackoverflow.com/questions/10239668/indentationerror-unexpected-unindent-why)
       - Referenced this post to help me work through a challenging bug regarding some of my indentation which was breaking the entirity of my code.
+
+-   [Try except statement(Python Basics](https://pythonbasics.org/try-except/)
+      - Helped me realise that I had forgotten to close off my try statements with the except function.
 
 -   [Battleship function ideas(stack overflow](https://codereview.stackexchange.com/questions/tagged/battleship)
       - Referenced posts within the stack overflow community to support the building of some of my functions. This also helped me visualise the 4x overlapping fields-of-play concept.
@@ -128,13 +134,13 @@ Initially, I did want to create a static board, with messages printed to the use
 -   [Am I Responsive](https://ui.dev/amiresponsive)
       - Used to produce the 'mockup' image of my game running on different devices (top of readme file).
 
+
 ## Testing
    
 #### PEP8
 
 - Due to the fact that the PEP8 website is currently down, I added the PEP8 validator to my Gitpod Workspace and ensured pycodestyle was enabled. This returned **no 'red' errors** and the only 'yellow' errors present were those referencing whitespace in and around my ASCII art at the start of my code.
-   
-   
+     
 ### Browser Compatibility
 
 - Testing has been successfully carried out on the following browsers:
@@ -153,7 +159,8 @@ Initially, I did want to create a static board, with messages printed to the use
      - All users could see the colour variations of text :white_check_mark:
      - All users saw the field of play displayed and were correctly guided through prompts to place their ships :white_check_mark:
      - On placing their ships, users were unable to place ships vertically :red_circle: 
-          - This is still unresolved and, although I have sought and found workable solutions through the Slack community (including a different method of displaying the grid using complex mathematics) I am unable to implement these in my current timeframe.
+          - This is still unresolved (15th October) and, although I have sought and found workable solutions through the Slack community (including a different method of displaying the grid using complex mathematics) I am unable to implement these in my current timeframe.
+          - Update (17th October): this has now been resolved through changing the order of syntax within the place_ship function (the 'column' was being passed **before** the integer).
      - During the game, all users reported the successful, random, deployment of the computer's ships :white_check_mark:
      - All users were able to see the correct markers for 'hits' and 'misses', and were able to read visual prompts regarding this :white_check_mark:
      - When the total number of hits was reached, all users experienced the 'end message' either congratulating or commiserating :white_check_mark:
@@ -162,38 +169,29 @@ Initially, I did want to create a static board, with messages printed to the use
 
 - **Raising ValueError**
       - I struggled with the syntax surrounding the multiple applications of the ValueError. Ultimately, I used advice on the internet and realised that one of my lines of code required the KeyError exception instead.
+- **Try except statement**
+      - I had an ongoing issue with my player_input_function where it was not executing the final stages of my block of code. After reviewing [this guide](https://pythonbasics.org/try-except/) I was able to see that I had simply forgotten to close off my try statement with an except function.
+- **Vertical placement**
+      - For a number of days, I was experiencing an issue where the user could not place ships vertically. After a number of tests, and accepting that the bug could not be resolved in time, I tried switching the order of my syntax (putting the integer passed 'i' before the 'column' as this would force the placement to work top-bottom).
 
 ### Unresolved Bugs
 
-- raising ValueError - struggled with syntax which lead to multiple errors...
-- player_input function - not correctly completing my 'try' statement with an 'except'...
-- ship placement issues - not correctly placing ships vertically...
+- **Ghost computer placement**
+      - During my own testing, on one occasion, the computer's random placement seemed to not be within the scope of the grid. I had successfully targeted every grid reference, and there was still **one** hit left to find. I have been unable to recreate the bug and now do not have time to investigate further.
+ 
  
 ## Deployment
 
-   ### How to deploy
-
-- Go to the GitHub repository and navigate to the 'Settings' tab. Once there, select 'Pages' from the menu
-- Go to the 'Source' menu (drop-down box) and select 'Master Branch'
-- After the page has auto-refreshed, you should see a detailed ribbon display - this demonstrates a successful deployment
-- Now, any changes pushed from GitPod to the master branch will be visible and take effect on the live project [live project link](https://nickdevc.github.io/Film_Quiz)
-
-   ### How to clone
-
-- Go to the following repository on GitHub: https://github.com/NickdevC/Film_Quiz
-- At the top right of the screen, click the 'Code' button, and then click 'HTTPs'
-- Copy the link in this field
-- In GitPod, open a new GitBash terminal and go to the directory where you want to find the clone
-- On the command line type "git clone", then paste the copied url and press 'Enter'
-- The clone process should now begin
-
-## Credits
+This game was deployed through Heroku. The live link is [here](https://nickdevc-battleships.herokuapp.com/)
 
 
-  ### Code
-  
--  '
+### Credits and Acknowledgements
 
-### Acknowledgements
+I completed this project in a very small window (13 days) after having two months off from the course due to a leave of absence. Coming back to essentially re-learn Python, and reconnect with the project whilst working full time was incredibly difficult. My first plans for a battleship game were scrapped early on as I found I was not progressing, and it was only through inspiration and guidance from other CI students that I was able to get this project off the ground. **I am incredibly grateful for the Slack community for their selfless support over the last fortnight.**
 
-- 
+- Credit to various inspiration from code found in various posts on [this Code Review thread](https://codereview.stackexchange.com/questions/tagged/battleship)
+- Thank you to 'Faris' (Slack community) for inspiration with regards to the 4x overlapping grid methodology and the start_game() logic.
+- A huge thank you to Warwick (Slack community) for offering guidance and support during some difficult testing phases.
+- Thank you to my mentor Martina, for offering me timely guidance right up until my deadline.
+
+
