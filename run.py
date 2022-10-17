@@ -115,7 +115,8 @@ def place_ship(field):
     for ship_length in SHIP_LENGTHS:
         while True:
             if field == AI_FIELD:
-                placement, row, column = random.choice(["H", "V"]), random.randint(0, 6), random.randint(0, 6)
+                placement, row, column = random.choice(["H", "V"]), \
+                    random.randint(0, 6), random.randint(0, 6)
                 if check_placement(ship_length, row, column, placement):
                     if not check_overlap(field, row, column, placement,
                                          ship_length):
@@ -257,10 +258,10 @@ def player_computer_cycle(field):
             player_computer_cycle(field)
         elif AI_FIELD[row][column] == "$":
             field[row][column] = "X"
-            print_fast("Hit!\n")
+            print_fast("\u001b[32mHit!\n")
         else:
             field[row][column] = "-"
-            print_fast("Missed!\n")
+            print_fast("\u001b[31mMissed!\n")
     else:
         row, column = random.randint(0, 8), random.randint(0, 8)
         if field[row][column] == "-":
@@ -269,10 +270,10 @@ def player_computer_cycle(field):
             player_computer_cycle(field)
         elif PLAYER_FIELD[row][column] == "$":
             field[row][column] = "X"
-            print_fast("We have been hit!\n")
+            print_fast("\u001b[31mWe have been hit!\n")
         else:
             field[row][column] = "-"
-            print_fast("They missed!\n")
+            print_fast("\u001b[32mThey missed!\n")
 
 
 def hit_counter(field):
@@ -306,14 +307,14 @@ def start_game():
             player_computer_cycle(PLAYER_GUESS)
             break
         if hit_counter(PLAYER_GUESS) == 17:
-            print("All enemy ships hit - you win!")
+            print_slow("All enemy ships hit - you win!")
             break
         while True:
             player_computer_cycle(AI_GUESS)
             break
         display_field(AI_GUESS)
         if hit_counter(AI_GUESS) == 17:
-            print("You have been bested on the high seas!")
+            print_slow("You have been bested on the high seas!")
             break
 
 
