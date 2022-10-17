@@ -187,7 +187,7 @@ Initially, I did want to create a static board, with messages printed to the use
 This game was deployed through Heroku. The live link is [here](https://nickdevc-battleships.herokuapp.com/)
 
 
-### Credits and Acknowledgements
+## Credits and Acknowledgements
 
 I completed this project in a very small window (13 days) after having two months off from the course due to a leave of absence. Coming back to essentially re-learn Python, and reconnect with the project whilst working full time was incredibly difficult. My first plans for a battleship game were scrapped early on as I found I was not progressing, and it was only through inspiration and guidance from other CI students that I was able to get this project off the ground. **I am incredibly grateful for the Slack community for their selfless support over the last fortnight.**
 
